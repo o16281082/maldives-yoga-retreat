@@ -233,16 +233,33 @@
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 400;
-            letter-spacing: 0.25em;
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
         }
 
-        nav.scrolled .logo { color: var(--deep-teal); }
+        .logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        /* Default: beige logo when nav is transparent / at top */
+        .logo-img--beige {
+            display: block;
+        }
+
+        .logo-img--black {
+            display: none;
+        }
+
+        /* When nav is scrolled: show black logo instead */
+        nav.scrolled .logo-img--beige {
+            display: none;
+        }
+
+        nav.scrolled .logo-img--black {
+            display: block;
+        }
 
         .nav-links {
             display: flex;
@@ -1079,6 +1096,24 @@
             letter-spacing: 0.1em;
         }
 
+        .gallery-hover-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            color: white;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .gallery-fullbleed:hover .gallery-hover-text {
+            opacity: 1;
+        }
+
         /* Side by side sections */
         .gallery-sidebyside {
             display: grid;
@@ -1420,11 +1455,10 @@
             align-items: center;
         }
 
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            letter-spacing: 0.2em;
-            color: white;
+        .footer-logo img.footer-logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
         }
 
         .footer-links {
@@ -1432,15 +1466,28 @@
             gap: 2rem;
         }
 
-        .footer-links a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s;
+        .footer-instagram {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .footer-links a:hover {
+        .footer-instagram a {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.5);
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-instagram a:hover {
             color: var(--soft-gold);
+            border-color: var(--soft-gold);
         }
 
         /* Responsive */
@@ -1597,7 +1644,10 @@
 
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="#" class="logo">YOGINOMADS</a>
+        <a href="#" class="logo">
+            <img src="Beige-and-Blue.png" alt="YogiNomads logo" class="logo-img logo-img--beige" />
+            <img src="Black-and-Blue.png" alt="YogiNomads logo" class="logo-img logo-img--black" />
+        </a>
         <div class="nav-links">
             <a href="#about">The Experience</a>
             <a href="#founder">Meet Lina</a>
@@ -1656,13 +1706,20 @@
                 <em>It's a remembering.</em>
             </h2>
             <p class="body-text">
-                Designed for those who seek beauty with intention, calm with energy, 
-                and luxury without pretense. Whether you flow daily or have never 
-                touched a mat, this experience meets you exactly where you are.
+                This retreat is designed for anyone who wants to experience the Maldives in a meaningful and elevated way — whether you practice yoga daily, occasionally, or not at all.
             </p>
             <p class="body-text">
-                Come alone, with a lover, with a friend. Solo travelers find 
-                themselves wrapped in the warmth of an instant community.
+                Yogis &amp; non-yogis enjoy this escape equally, as the program blends wellness, ocean living, exploration, fitness, and lively evenings into one seamless experience.
+            </p>
+            <p class="body-text">
+                You are welcome to come alone, with a friend, or with your partner. 
+                Solo travelers feel instantly at ease within the warm Yogi Nomads community, while friends and couples enjoy a natural flow between shared moments &amp; personal space.
+            </p>
+            <p class="body-text">
+                Everything is structured with intention — offering depth when you seek it, calm when you need it, and joy that feels organic.
+            </p>
+            <p class="body-text">
+                This is the Maldives, with purpose: a curated experience where movement, music, ocean energy, and boutique luxury island living come together in a way that feels effortless, welcoming, and unforgettable.
             </p>
             <div class="feature-list">
                 <div class="feature-item">
@@ -2017,6 +2074,17 @@
                 <div class="gallery-text">
                     <p class="script">Move with intention</p>
                     <p class="subtitle">Flow sessions designed for every body</p>
+                    <div style="margin-top: 1.75rem; text-align: center; max-width: 420px; margin-left: auto; margin-right: auto;">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--deep-teal); font-style: italic; margin-bottom: 0.75rem;">
+                            Who is this retreat for?
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--warm-taupe); line-height: 1.7;">
+                            <li>All levels, from complete beginners to advanced practitioners</li>
+                            <li>Guests who enjoy a modern, grounded approach to yoga</li>
+                            <li>Travelers who appreciate variety, structure, freedom and refined experiences</li>
+                            <li>Solo travelers, couples, and friends looking for an uplifting escape</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2049,6 +2117,9 @@
                 <div class="gallery-text">
                     <p class="script">Stillness awaits</p>
                     <p class="subtitle">Spaces designed for surrender</p>
+                    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--soft-gold); margin-top: 1rem; max-width: 420px; margin-left: auto; margin-right: auto; text-align: justify;">
+                        This is a luxury-meets-wellness journey, hosted at one of the Maldives&rsquo; most refined new resorts, your days begin with turquoise horizons and unfold with barefoot calm, intuitive service, and the comfort of knowing everything has already been taken care of.
+                    </p>
                 </div>
             </div>
         </div>
@@ -2073,6 +2144,7 @@
             <div class="gallery-overlay">
                 <div class="gallery-text">
                     <p class="script">Let the ocean hold you</p>
+                    <p class="gallery-hover-text">The yoga journey is founder-led, multi-style, personal, modern, and accessible — blending flow, strength, breathwork, philosophy, music, and the rhythm of the ocean.</p>
                 </div>
             </div>
         </div>
@@ -2174,7 +2246,14 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <span class="footer-logo">YOGINOMADS</span>
+            <span class="footer-logo">
+                <img src="Beige-and-Blue.png" alt="YogiNomads logo" class="footer-logo-img" />
+            </span>
+            <div class="footer-instagram">
+                <a href="https://instagram.com/yoginomads" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
@@ -2185,9 +2264,15 @@
         </button>
         <div style="text-align: center;">
             <i class="fa-solid fa-water" style="font-size: 3rem; color: var(--deep-teal); margin-bottom: 1rem;"></i>
-            <h3 class="section-title" style="margin-bottom: 0.5rem; color: var(--deep-teal);">Early Bird Special</h3>
-            <p style="color: var(--warm-taupe); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">
-                Book now to get a chance to enter a raffle to <strong style="color: var(--deep-teal);">win the trip for free</strong>!
+            <h3 class="section-title" style="margin-bottom: 0.75rem; color: var(--deep-teal);">Early Confirmation Privilege</h3>
+            <p style="color: var(--warm-taupe); margin-bottom: 0.75rem; font-size: 1rem; line-height: 1.6;">
+                Guests who complete full payment before February 15, 2026 are automatically entered into a private post-retreat credit draw.
+            </p>
+            <p style="color: var(--warm-taupe); margin-bottom: 0.5rem; font-size: 1rem; line-height: 1.6;">
+                One guest will receive <strong style="color: var(--deep-teal);">500 USD</strong> credited back!
+            </p>
+            <p style="color: var(--warm-taupe); margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5; font-style: italic;">
+                Limited to confirmed participants.
             </p>
             <a href="#pricing" 
                class="hero-cta-primary" 
