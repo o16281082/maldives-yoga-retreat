@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>YogiNomads | Maldives Luxury Yoga Retreat</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --sand: #E8DDD4;
+            --blush: #E8C4B8;
+            --rose-gold: #C9A89A;
+            --warm-taupe: #8B7D74;
+            --deep-teal: #1A5F5E;
+            --ocean: #2A7B8C;
+            --sunset-coral: #E6A68F;
+            --lavender-mist: #D4C8D9;
+            --soft-gold: #D4B896;
+            --golden-hour: #E8B87D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            color: #4A4A4A;
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+            padding-top: 7rem;
+        }
+
+        /* Utility Classes */
+        .font-display { font-family: 'Cormorant Garamond', serif; }
+        .font-script { font-family: 'Pinyon Script', cursive; }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(1deg); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Early Bird Banner */
+        .early-bird-banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 101;
+            background: linear-gradient(90deg, var(--deep-teal), var(--ocean), var(--deep-teal));
+            background-size: 200% 100%;
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .early-bird-banner span {
+            color: var(--soft-gold);
+        }
+
+        .early-bird-banner.hidden {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 2.5rem;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s ease;
+            background: linear-gradient(90deg, var(--deep-teal), var(--ocean), var(--deep-teal));
+            background-size: 200% 100%;
+        }
+
+        nav.scrolled {
+            background: rgba(253, 248, 243, 0.97);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            padding: 1rem 4%;
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav.scrolled .logo { color: var(--deep-teal); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled .nav-links a { color: var(--warm-taupe); }
+        .nav-links a:hover { color: var(--soft-gold); }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-style: normal !important;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s !important;
+        }
+
+        nav.scrolled .nav-cta {
+            background: var(--deep-teal);
+            border-color: var(--deep-teal);
+            color: white !important;
+        }
+
+        .nav-cta:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        nav.scrolled .nav-cta:hover {
+            background: var(--ocean);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.25) 0%,
+                rgba(0,0,0,0.1) 40%,
+                rgba(26,95,94,0.35) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            animation: fadeInUp 1.2s ease-out;
+            margin-top: 2rem;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            animation: drift 6s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.8rem, 9vw, 6.5rem);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-details {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            background: var(--deep-teal);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(26,95,94,0.4);
+        }
+
+        .hero-cta-primary:hover {
+            background: var(--ocean);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(26,95,94,0.5);
+        }
+
+        .hero-cta-secondary {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-cta-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 28px;
+            height: 28px;
+            stroke: rgba(255,255,255,0.5);
+        }
+
+        /* Section Styles */
+        .section-script {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--rose-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            color: var(--deep-teal);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .body-text {
+            font-size: 1.05rem;
+            color: var(--warm-taupe);
+            margin-bottom: 1.25rem;
+            max-width: 550px;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 6%;
+            background: var(--cream);
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--deep-teal);
+        }
+
+        .feature-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--sunset-coral);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Experience Cards */
+        .experience {
+            padding: 7rem 4%;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--sand) 100%);
+        }
+
+        .experience-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .exp-card {
+            position: relative;
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .exp-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s ease;
+        }
+
+        .exp-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .exp-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.75) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.75rem;
+            color: white;
+        }
+
+        .exp-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-card-desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* Founder Section */
+        .founder {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            background: var(--cream);
+        }
+
+        .founder-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 6%;
+            order: 1;
+        }
+
+        .founder-image {
+            position: relative;
+            overflow: hidden;
+            order: 2;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--sand);
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--deep-teal);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--warm-taupe);
+            margin-top: 0.25rem;
+        }
+
+        /* Daily Flow */
+        .daily-flow {
+            padding: 6rem 4%;
+            background: var(--sand);
+        }
+
+        .daily-flow-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .flow-timeline {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .flow-timeline::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: var(--rose-gold);
+            opacity: 0.5;
+        }
+
+        .flow-item {
+            flex: 1;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .flow-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--sunset-coral);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--deep-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-activity {
+            font-size: 0.9rem;
+            color: var(--warm-taupe);
+            line-height: 1.5;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            position: relative;
+            padding: 6rem 4%;
+            background: var(--deep-teal);
+            overflow: hidden;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-header .section-script {
+            color: var(--soft-gold);
+        }
+
+        .testimonials-header .section-title {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 1.5rem;
+            color: var(--soft-gold);
+        }
+
+        /* Villas Section */
+        .villas {
+            padding: 7rem 4%;
+            background: var(--cream);
+        }
+
+        .villas-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1300px;
+            margin: 0 auto 3.5rem;
+            align-items: end;
+        }
+
+        .villas-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1.25rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            height: 550px;
+        }
+
+        .villa-img {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .villa-img.main {
+            grid-row: span 2;
+        }
+
+        .villa-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s ease;
+        }
+
+        .villa-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Inclusions Section */
+        .inclusions {
+            position: relative;
+            padding: 7rem 4%;
+            background-image: url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .inclusions-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .inclusions-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .inclusions-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .inclusions-header .section-script {
+            color: var(--soft-gold);
+        }
+
+        .inclusions-header .section-title {
+            color: white;
+        }
+
+        .inclusions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: rgba(255,255,255,0.97);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+
+        .inclusions-col h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--deep-teal);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--sand);
+        }
+
+        .inclusions-col.not-included h3 {
+            color: var(--warm-taupe);
+        }
+
+        .inclusion-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.9rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .inclusion-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .inclusion-item svg.check {
+            stroke: var(--deep-teal);
+        }
+
+        .inclusion-item svg.x {
+            stroke: var(--rose-gold);
+        }
+
+        .inclusions-note {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--sand);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--warm-taupe);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 7rem 4%;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--sand) 100%);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--deep-teal), var(--ocean));
+            color: white;
+            padding: 0.6rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .pricing-amount {
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-original {
+            font-size: 1.2rem;
+            color: var(--warm-taupe);
+            text-decoration: line-through;
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing-current {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--deep-teal);
+        }
+
+        .pricing-current span {
+            font-size: 1.5rem;
+            color: var(--warm-taupe);
+        }
+
+        .pricing-per {
+            font-size: 1rem;
+            color: var(--warm-taupe);
+        }
+
+        .pricing-details {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .pricing-detail {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .pricing-ctas {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-cta {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.1rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-cta-primary {
+            background: var(--deep-teal);
+            color: white;
+        }
+
+        .pricing-cta-primary:hover {
+            background: var(--ocean);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(26,95,94,0.3);
+        }
+
+        .pricing-cta-secondary {
+            background: transparent;
+            color: var(--deep-teal);
+            border: 1px solid var(--rose-gold);
+        }
+
+        .pricing-cta-secondary:hover {
+            background: var(--sand);
+        }
+
+        .pricing-note {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--warm-taupe);
+            font-style: italic;
+        }
+
+        /* ============================================
+           VISUAL GALLERY - Editorial Style
+           ============================================ */
+        .visual-gallery {
+            background: var(--cream);
+        }
+
+        .gallery-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Full-bleed image sections */
+        .gallery-fullbleed {
+            position: relative;
+            height: 85vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .gallery-fullbleed img,
+        .gallery-fullbleed video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-fullbleed img {
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .gallery-text {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .gallery-text .script {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.2;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .gallery-text .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-style: italic;
+            margin-top: 0.75rem;
+            opacity: 0.9;
+            letter-spacing: 0.1em;
+        }
+
+        /* Side by side sections */
+        .gallery-sidebyside {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+        }
+
+        .gallery-sidebyside.reverse {
+            direction: rtl;
+        }
+
+        .gallery-sidebyside > * {
+            direction: ltr;
+        }
+
+        .gallery-sidebyside-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-sidebyside-img img,
+        .gallery-sidebyside-img video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+
+        .gallery-sidebyside-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-sidebyside-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            background: var(--sand);
+            text-align: center;
+        }
+
+        .gallery-sidebyside.alt .gallery-sidebyside-content {
+            background: var(--deep-teal);
+        }
+
+        .gallery-sidebyside.alt .gallery-text .script {
+            color: white;
+        }
+
+        .gallery-sidebyside.alt .gallery-text .subtitle {
+            color: var(--soft-gold);
+        }
+
+        .gallery-sidebyside-content .gallery-text .script {
+            color: var(--deep-teal);
+            text-shadow: none;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+        .gallery-sidebyside-content .gallery-text .subtitle {
+            color: var(--warm-taupe);
+        }
+
+        /* Video specific styles */
+        .gallery-video-container {
+            position: relative;
+        }
+
+        .gallery-video-container video {
+            display: block;
+        }
+
+        .video-play-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Asymmetric duo */
+        .gallery-asymmetric {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 0;
+            padding: 0;
+            background: var(--cream);
+            min-height: 60vh;
+        }
+
+        .gallery-asymmetric.reverse {
+            grid-template-columns: 1fr 1.5fr;
+        }
+
+        .gallery-asymmetric-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-asymmetric-img img,
+        .gallery-asymmetric-img video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s ease;
+        }
+
+        .gallery-asymmetric-img:hover img,
+        .gallery-asymmetric-img:hover video {
+            transform: scale(1.05);
+        }
+
+        /* Responsive for gallery */
+        @media (max-width: 1024px) {
+            .gallery-sidebyside {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .gallery-sidebyside-img {
+                height: 50vh;
+                min-height: 300px;
+            }
+
+            .gallery-sidebyside-content {
+                padding: 3rem 2rem;
+            }
+
+            .gallery-sidebyside.reverse {
+                direction: ltr;
+            }
+
+            .gallery-asymmetric {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .gallery-asymmetric.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-asymmetric-img {
+                height: 40vh;
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-fullbleed {
+                height: 70vh;
+                min-height: 400px;
+            }
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 4%;
+            background: var(--cream);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--sand);
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--deep-teal);
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--ocean);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            stroke: var(--rose-gold);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-top: 1rem;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            color: var(--warm-taupe);
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            position: relative;
+            padding: 8rem 4%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .final-cta-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .final-cta-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35);
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+        }
+
+        .final-cta .section-script {
+            color: var(--soft-gold);
+            font-size: 2.5rem;
+        }
+
+        .final-cta .section-title {
+            color: white;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .final-cta-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .final-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .final-cta-btn-primary {
+            background: white;
+            color: var(--deep-teal);
+        }
+
+        .final-cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .final-cta-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .final-cta-btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .final-cta-contact {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .final-cta-contact a {
+            color: var(--soft-gold);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 4%;
+            background: var(--deep-teal);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.2em;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--soft-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about,
+            .founder {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image,
+            .founder-image {
+                height: 50vh;
+                order: 0 !important;
+            }
+
+            .about-content,
+            .founder-content {
+                order: 1 !important;
+            }
+
+            .experience-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .villas-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .villas-gallery {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                height: auto;
+            }
+
+            .villa-img {
+                height: 280px;
+            }
+
+            .villa-img.main {
+                height: 350px;
+                grid-row: span 1;
+            }
+
+            .inclusions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .flow-timeline::before {
+                display: none;
+            }
+
+            .pricing-ctas {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-details {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .founder-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .final-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Early Bird Banner -->
+    <div class="early-bird-banner">
+        Early Confirmation Privilege — <span>Save $275</span> when you book before Feb 15
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">YOGINOMADS</a>
+        <div class="nav-links">
+            <a href="#about">The Experience</a>
+            <a href="#founder">Meet Lina</a>
+            <a href="#villas">The Villas</a>
+            <a href="#pricing">Investment</a>
+            <a href="https://wa.me/1234567890" class="nav-cta">
+                <i class="fa-brands fa-whatsapp"></i> Inquire
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="IMG_7423.JPG" alt="Maldives aerial view of turquoise lagoon"/>
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <p class="hero-eyebrow">Surrender to the Sea</p>
+            <h1 class="hero-title">
+                Maldives Luxury<br/>
+                <em>Yoga Retreat</em>
+            </h1>
+            <div class="hero-details">
+                <span>October 12 – 19, 2024</span>
+                <span>·</span>
+                <span>Avani+ Fares Resort, Baa Atoll</span>
+            </div>
+            <div class="hero-ctas">
+                <a href="#pricing" class="hero-cta-secondary">View Investment →</a>
+                <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20the%20Maldives%20retreat" class="hero-cta-primary">
+                    <i class="fa-brands fa-whatsapp"></i> Request Full Program
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="IMG_7530.JPG" alt="Woman floating in crystal clear Maldives water"/>
+        </div>
+        <div class="about-content">
+            <p class="section-script">Where Ocean Meets Soul</p>
+            <h2 class="section-title">
+                This is not just a retreat.<br/>
+                <em>It's a remembering.</em>
+            </h2>
+            <p class="body-text">
+                Designed for those who seek beauty with intention, calm with energy, 
+                and luxury without pretense. Whether you flow daily or have never 
+                touched a mat, this experience meets you exactly where you are.
+            </p>
+            <p class="body-text">
+                Come alone, with a lover, with a friend. Solo travelers find 
+                themselves wrapped in the warmth of an instant community.
+            </p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="feature-dot"></span>
+                    Sunrise & sunset yoga overlooking the lagoon
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot"></span>
+                    Private island excursions & snorkeling
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot"></span>
+                    Sound healing journeys under the stars
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot"></span>
+                    DJ evenings, bonfires & beach cinema
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Cards -->
+    <section class="experience">
+        <div class="experience-header">
+            <p class="section-script">What Awaits You</p>
+            <h2 class="section-title">Three Pillars of <em>Presence</em></h2>
+        </div>
+        <div class="experience-grid">
+            <div class="exp-card">
+                <img src="IMG_7532.JPG" alt="Luxury resort pool at sunset"/>
+                <div class="exp-card-overlay">
+                    <h3 class="exp-card-title">Luxury Meets Wellness</h3>
+                    <p class="exp-card-desc">Five-star island living with barefoot elegance</p>
+                </div>
+            </div>
+            <div class="exp-card">
+                <img src="IMG_9629.JPG" alt="Intimate yoga moment on beach"/>
+                <div class="exp-card-overlay">
+                    <h3 class="exp-card-title">Founder-Led Journey</h3>
+                    <p class="exp-card-desc">Personal, modern, music-driven practice</p>
+                </div>
+            </div>
+            <div class="exp-card">
+                <img src="IMG_7534.JPG" alt="Beach dining at sunset"/>
+                <div class="exp-card-overlay">
+                    <h3 class="exp-card-title">Depth & Enjoyment</h3>
+                    <p class="exp-card-desc">Calm and celebration, woven together</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder" id="founder">
+        <div class="founder-content">
+            <p class="section-script">Meet Your Guide</p>
+            <h2 class="section-title">Lina Aoun</h2>
+            <p class="body-text">
+                Founder of Yogi Nomads and a 200-hour certified Sivananda yoga teacher. 
+                Her teaching style is modern, grounded, and beautifully woven with music — 
+                designed to support both beginners and advanced practitioners.
+            </p>
+            <p class="body-text">
+                With over a decade of experience hosting retreats across the globe, 
+                Lina creates spaces that feel warm in energy, intentional in design, 
+                and consistently transformative.
+            </p>
+            <div class="founder-stats">
+                <div class="stat">
+                    <div class="stat-number">8,000+</div>
+                    <div class="stat-label">Hours Teaching</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Retreats Hosted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+        <div class="founder-image">
+            <img src="IMG_9662.JPG" alt="Lina Aoun leading yoga on beach"/>
+        </div>
+    </section>
+
+    <!-- Daily Flow -->
+    <section class="daily-flow">
+        <div class="daily-flow-header">
+            <p class="section-script">A Day in Paradise</p>
+            <h2 class="section-title">Sample <em>Daily Flow</em></h2>
+        </div>
+        <div class="flow-timeline">
+            <div class="flow-item">
+                <div class="flow-dot"></div>
+                <div class="flow-time">Morning</div>
+                <div class="flow-activity">Signature yoga<br/>session</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-dot"></div>
+                <div class="flow-time">Late Morning</div>
+                <div class="flow-activity">Breakfast &<br/>island time</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-dot"></div>
+                <div class="flow-time">Afternoon</div>
+                <div class="flow-activity">Beach, snorkeling,<br/>spa, or excursions</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-dot"></div>
+                <div class="flow-time">Late Afternoon</div>
+                <div class="flow-activity">Sound healing or<br/>musical yoga flow</div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-dot"></div>
+                <div class="flow-time">Evening</div>
+                <div class="flow-activity">DJ night, bonfire,<br/>or beach cinema</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-header">
+            <p class="section-script">Guest Experiences</p>
+            <h2 class="section-title">Words from <em>Past Retreats</em></h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "The retreat was exceptionally well planned yet never felt rigid. 
+                    A beautiful balance between structure and freedom to simply enjoy."
+                </p>
+                <p class="testimonial-author">— Claudine S.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "The yoga classes were truly unique — creative, intelligent, and adaptable. 
+                    They stood out from anything I've experienced before."
+                </p>
+                <p class="testimonial-author">— Rita G.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "I came alone and within days it felt like a genuine, warm group — 
+                    connected, relaxed, and completely at ease."
+                </p>
+                <p class="testimonial-author">— Noura H.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villas Section -->
+    <section class="villas" id="villas">
+        <div class="villas-header">
+            <div>
+                <p class="section-script">Your Sanctuary</p>
+                <h2 class="section-title">The Resort & <em>Villas</em></h2>
+            </div>
+            <div>
+                <p class="body-text" style="max-width: 100%;">
+                    Avani+ Fares Maldives is a five-star island resort in the heart of Baa Atoll, 
+                    a UNESCO Biosphere Reserve. Beachfront pavilion villas stretch directly onto 
+                    white sand with seamless indoor-outdoor living.
+                </p>
+            </div>
+        </div>
+        <div class="villas-gallery">
+            <div class="villa-img main">
+                <img src="IMG_7411.JPG" alt="Villa exterior at dusk"/>
+            </div>
+            <div class="villa-img">
+                <img src="IMG_7409.JPG" alt="Villa bedroom with ocean view"/>
+            </div>
+            <div class="villa-img">
+                <img src="IMG_7413.JPG" alt="Luxury villa bathroom"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inclusions Section -->
+    <section class="inclusions">
+        <div class="inclusions-overlay"></div>
+        <div class="inclusions-content">
+            <div class="inclusions-header">
+                <p class="section-script">The Package</p>
+                <h2 class="section-title">What's <em>Included</em></h2>
+            </div>
+            <div class="inclusions-grid">
+                <div class="inclusions-col">
+                    <h3>Included in Your Journey</h3>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Five nights at Avani+ Fares Maldives Resort
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Five breakfasts and five dinners
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Daily multi-style yoga program with Lina
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Yoga-to-music immersions
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Two sound healing experiences
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        One kayaking session
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Snorkeling equipment (mask & fins)
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        DJ evenings, bonfire, drums & beach cinema
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Two fitness sessions with AvaniFit
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        Beach & pool loungers with towel service
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        All resort facilities & house reef access
+                    </div>
+                </div>
+                <div class="inclusions-col not-included">
+                    <h3>Not Included</h3>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        International flights
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Seaplane transfer
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Travel insurance
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Personal expenses
+                    </div>
+                    <p class="inclusions-note">
+                        Spa treatments and ocean excursions can be pre-booked at special 
+                        retreat rates. Availability is limited and sessions tend to fill quickly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-header">
+            <p class="section-script">Your Investment</p>
+            <h2 class="section-title">Reserve Your <em>Place</em></h2>
+        </div>
+        <div class="pricing-card">
+            <div class="pricing-badge">
+                ✨ Early Confirmation — Pay before Feb 15 for a chance to win $500 credit
+            </div>
+            <div class="pricing-amount">
+                <div class="pricing-original">$2,450</div>
+                <div class="pricing-current">$2,175 <span>USD</span></div>
+                <div class="pricing-per">per person</div>
+            </div>
+            <div class="pricing-details">
+                <p class="pricing-detail">30% non-refundable deposit to confirm your spot</p>
+                <p class="pricing-detail">Remaining 70% due 45 days before retreat</p>
+            </div>
+            <div class="pricing-ctas">
+                <a href="https://wa.me/1234567890?text=I'd%20like%20to%20pay%20the%2030%25%20deposit%20for%20the%20Maldives%20retreat" class="pricing-cta pricing-cta-secondary">
+                    Pay 30% Deposit
+                </a>
+                <a href="https://wa.me/1234567890?text=I'd%20like%20to%20pay%20in%20full%20for%20the%20Maldives%20retreat" class="pricing-cta pricing-cta-primary">
+                    Pay in Full
+                </a>
+            </div>
+            <p class="pricing-note">
+                Direct bookings handled personally by Lina<br/>
+                Shared villa options available — we'll pair you if needed
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         VISUAL GALLERY - Editorial Dream Sequence
+         ============================================ -->
+    <section class="visual-gallery">
+
+        <!-- Full-bleed image with text overlay -->
+        <div class="gallery-section gallery-fullbleed">
+            <img src="IMG_7425.JPG" alt="Aerial view of Maldives beach and villas"/>
+            <div class="gallery-overlay">
+                <div class="gallery-text">
+                    <p class="script">Mornings that feel like dreams</p>
+                    <p class="subtitle">Wake to turquoise horizons</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side by side: Image + Text -->
+        <div class="gallery-section gallery-sidebyside">
+            <div class="gallery-sidebyside-img">
+                <img src="IMG_7426.JPG" alt="Yoga practitioners in cobra pose"/>
+            </div>
+            <div class="gallery-sidebyside-content">
+                <div class="gallery-text">
+                    <p class="script">Move with intention</p>
+                    <p class="subtitle">Flow sessions designed for every body</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-bleed video placeholder (replace src with actual video) -->
+        <div class="gallery-section gallery-fullbleed gallery-video-container">
+            <!-- Replace this img with a video tag when you have video content:
+            <video autoplay muted loop playsinline>
+                <source src="your-video.mp4" type="video/mp4">
+            </video>
+            -->
+            <img src="IMG_7407.JPG" alt="Beach bar at golden hour"/>
+            <div class="gallery-overlay">
+                <div class="gallery-text">
+                    <p class="script">Golden hour rituals</p>
+                    <p class="subtitle">Where sunset becomes ceremony</p>
+                </div>
+            </div>
+            <!-- Uncomment when using video:
+            <div class="video-play-hint">Sound on for the full experience</div>
+            -->
+        </div>
+
+        <!-- Side by side reversed: Text + Image -->
+        <div class="gallery-section gallery-sidebyside reverse alt">
+            <div class="gallery-sidebyside-img">
+                <img src="IMG_7408.JPG" alt="Spa entrance with reflecting pool"/>
+            </div>
+            <div class="gallery-sidebyside-content">
+                <div class="gallery-text">
+                    <p class="script">Stillness awaits</p>
+                    <p class="subtitle">Spaces designed for surrender</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Asymmetric duo -->
+        <div class="gallery-section gallery-asymmetric">
+            <div class="gallery-asymmetric-img">
+                <video autoplay muted loop playsinline>
+                    <source src="IMG_9643.MP4" type="video/mp4">
+                </video>
+            </div>
+            <div class="gallery-asymmetric-img">
+                <video autoplay muted loop playsinline>
+                    <source src="IMG_9362.MP4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <!-- Full-bleed final image -->
+        <div class="gallery-section gallery-fullbleed">
+            <img src="IMG_7531.JPG" alt="Woman floating in crystal clear water"/>
+            <div class="gallery-overlay">
+                <div class="gallery-text">
+                    <p class="script">Let the ocean hold you</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- End Visual Gallery -->
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq-header">
+            <p class="section-script">Questions?</p>
+            <h2 class="section-title">Frequently <em>Asked</em></h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is this suitable for complete beginners or non-yogis?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. All sessions are multi-level and accessible. This retreat is designed for anyone who wants to experience the Maldives in a meaningful way — whether you practice yoga daily or not at all.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is it suitable for advanced practitioners?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. The Fusion and Minimalist Flow sessions offer depth and challenge for experienced yogis, while remaining accessible to others in the group.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I join alone?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>Many guests come solo and quickly feel at home within the group. The warmth of the Yogi Nomads community means you'll never feel alone — connections form naturally and beautifully.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What about dietary requirements?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>All dietary preferences are accommodated including plant-based, pescatarian, gluten-free, and dairy-free. The resort offers multiple dining venues with fresh, tropical ingredients.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I extend my stay?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, extensions can be arranged upon request. Many guests choose to arrive early or stay longer to fully immerse in the island experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-bg">
+            <img src="IMG_7532.JPG" alt="Infinity pool at sunset"/>
+        </div>
+        <div class="final-cta-content">
+            <p class="section-script">Ready to Begin?</p>
+            <h2 class="section-title">This retreat is best explained <em>in conversation.</em></h2>
+            <p class="final-cta-text">
+                Reach out to Lina directly. She personally handles all bookings 
+                and is happy to answer any questions.
+            </p>
+            <div class="final-cta-buttons">
+                <a href="https://wa.me/1234567890?text=I'd%20like%20to%20learn%20more%20about%20the%20Maldives%20retreat" class="final-cta-btn final-cta-btn-primary">
+                    <i class="fa-brands fa-whatsapp"></i> Talk to Lina
+                </a>
+                <a href="mailto:hello@yoginomads.com" class="final-cta-btn final-cta-btn-secondary">
+                    Request Full Program via Email
+                </a>
+            </div>
+            <p class="final-cta-contact">
+                Or email directly: <a href="mailto:hello@yoginomads.com">hello@yoginomads.com</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span class="footer-logo">YOGINOMADS</span>
+            <div class="footer-links">
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect with hide/show on scroll
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const banner = document.querySelector('.early-bird-banner');
+            const currentScrollY = window.scrollY;
+            
+            // Navbar background change
+            if (currentScrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            // Hide/show on scroll direction
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                        // Scrolling down - hide
+                        nav.classList.add('hidden');
+                        if (banner) banner.classList.add('hidden');
+                    } else {
+                        // Scrolling up - show
+                        nav.classList.remove('hidden');
+                        if (banner) banner.classList.remove('hidden');
+                    }
+                    
+                    lastScrollY = currentScrollY;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
