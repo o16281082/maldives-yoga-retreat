@@ -78,6 +78,72 @@
             to { opacity: 1; }
         }
 
+        @keyframes popupFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translate(-50%, -40%); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translate(-50%, -50%); 
+            }
+        }
+
+        /* Popup Styles */
+        #promo-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            z-index: 1000;
+            border-top: 4px solid var(--deep-teal);
+        }
+
+        #promo-popup.show {
+            display: block;
+        }
+
+        #promo-popup.popup-animate {
+            animation: popupFadeIn 0.5s ease-out forwards;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--warm-taupe);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .popup-close:hover {
+            color: var(--deep-teal);
+        }
+
+        #popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            backdrop-filter: blur(4px);
+        }
+
+        #popup-overlay.show {
+            display: block;
+        }
+
         /* Early Bird Banner */
         .early-bird-banner {
             position: fixed;
@@ -128,8 +194,43 @@
         }
 
         nav.hidden {
-            transform: translateY(-100%);
+            transform: translateY(calc(-100% - 2.5rem));
             transition: transform 0.3s ease;
+        }
+
+        /* Hamburger Menu Button */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 102;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .mobile-menu-toggle span {
+            background: var(--deep-teal);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .logo {
@@ -1351,12 +1452,12 @@
             .about-image,
             .founder-image {
                 height: 50vh;
-                order: 0 !important;
+                order: 1 !important;
             }
 
             .about-content,
             .founder-content {
-                order: 1 !important;
+                order: 0 !important;
             }
 
             .experience-grid,
@@ -1404,8 +1505,31 @@
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 7rem; /* Banner + Nav height */
+                left: 0;
+                right: 0;
+                background: var(--deep-teal);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 101;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .nav-links a {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
             .hero-details {
@@ -1450,6 +1574,11 @@
                 <i class="fa-brands fa-whatsapp"></i> Inquire
             </a>
         </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- Hero Section -->
@@ -1472,9 +1601,6 @@
             </div>
             <div class="hero-ctas">
                 <a href="#pricing" class="hero-cta-secondary">View Investment →</a>
-                <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20the%20Maldives%20retreat" class="hero-cta-primary">
-                    <i class="fa-brands fa-whatsapp"></i> Request Full Program
-                </a>
             </div>
         </div>
 
@@ -2002,8 +2128,8 @@
                 <a href="https://wa.me/1234567890?text=I'd%20like%20to%20learn%20more%20about%20the%20Maldives%20retreat" class="final-cta-btn final-cta-btn-primary">
                     <i class="fa-brands fa-whatsapp"></i> Talk to Lina
                 </a>
-                <a href="mailto:hello@yoginomads.com" class="final-cta-btn final-cta-btn-secondary">
-                    Request Full Program via Email
+                <a href="#checkout" class="final-cta-btn final-cta-btn-secondary">
+                    Book now!
                 </a>
             </div>
             <p class="final-cta-contact">
@@ -2016,13 +2142,29 @@
     <footer>
         <div class="footer-content">
             <span class="footer-logo">YOGINOMADS</span>
-            <div class="footer-links">
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Instagram</a>
-            </div>
         </div>
     </footer>
+
+    <!-- Popup -->
+    <div id="promo-popup">
+        <button class="popup-close" onclick="closePopup()" aria-label="Close">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <div style="text-align: center;">
+            <i class="fa-solid fa-water" style="font-size: 3rem; color: var(--deep-teal); margin-bottom: 1rem;"></i>
+            <h3 class="section-title" style="margin-bottom: 0.5rem; color: var(--deep-teal);">Early Bird Special</h3>
+            <p style="color: var(--warm-taupe); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">
+                Book now to get a chance to enter a raffle to <strong style="color: var(--deep-teal);">win the trip for free</strong>!
+            </p>
+            <a href="#pricing" 
+               class="hero-cta-primary" 
+               style="display: block; text-align: center; text-decoration: none;"
+               onclick="closePopup()">
+                Book Now & Enter Raffle
+            </a>
+        </div>
+    </div>
+    <div id="popup-overlay" onclick="closePopup()"></div>
 
     <script>
         // Navbar scroll effect with hide/show on scroll
@@ -2091,6 +2233,55 @@
                     });
                 }
             });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // Popup Logic
+        const popup = document.getElementById('promo-popup');
+        const overlay = document.getElementById('popup-overlay');
+        let popupShown = false;
+
+        function showPopup() {
+            if (!popupShown && popup && overlay) {
+                popup.classList.add('show', 'popup-animate');
+                overlay.classList.add('show');
+                popupShown = true;
+            }
+        }
+
+        function closePopup() {
+            if (popup && overlay) {
+                popup.classList.remove('show', 'popup-animate');
+                overlay.classList.remove('show');
+            }
+        }
+
+        // Trigger popup on scroll percentage or timer
+        setTimeout(showPopup, 25000); // 25 seconds fallback
+
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > 75 && !popupShown) {
+                showPopup();
+            }
         });
     </script>
 
