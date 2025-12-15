@@ -182,12 +182,11 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.5s ease;
-            background: linear-gradient(90deg, var(--deep-teal), var(--ocean), var(--deep-teal));
-            background-size: 200% 100%;
+            background: transparent;
         }
 
         nav.scrolled {
-            background: rgba(253, 248, 243, 0.97);
+            background: rgba(253, 248, 243, 0.8);
             backdrop-filter: blur(20px);
             box-shadow: 0 4px 30px rgba(0,0,0,0.05);
             padding: 1rem 4%;
@@ -294,11 +293,13 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: calc(100vh + 4.5rem);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            margin-top: -4.5rem;
+            padding-top: 4.5rem;
         }
 
         .hero-bg {
@@ -1505,6 +1506,12 @@
         }
 
         @media (max-width: 768px) {
+            .early-bird-banner {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.85rem;
+                line-height: 1.3;
+            }
+
             .mobile-menu-toggle {
                 display: flex;
             }
@@ -1530,6 +1537,15 @@
             .nav-links a {
                 padding: 1rem 0;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-links .nav-cta {
+                padding: 0.7rem 1.5rem;
+                border-radius: 50px;
+                border-bottom: none;
+                margin-top: 0.5rem;
+                width: fit-content;
+                align-self: center;
             }
 
             .hero-details {
@@ -1559,7 +1575,7 @@
 
     <!-- Early Bird Banner -->
     <div class="early-bird-banner">
-        Early Confirmation Privilege — <span>Save $275</span> when you book before Feb 15
+        Early Confirmation Privilege — <span>Save $275</span> when you book before March 15
     </div>
 
     <!-- Navigation -->
@@ -1570,7 +1586,7 @@
             <a href="#founder">Meet Lina</a>
             <a href="#villas">The Villas</a>
             <a href="#pricing">Investment</a>
-            <a href="https://wa.me/1234567890" class="nav-cta">
+            <a href="https://wa.me/9613543547" class="nav-cta">
                 <i class="fa-brands fa-whatsapp"></i> Inquire
             </a>
         </div>
@@ -1595,7 +1611,7 @@
                 <em>Yoga Retreat</em>
             </h1>
             <div class="hero-details">
-                <span>October 12 – 19, 2024</span>
+                <span>April 10–15, 2026</span>
                 <span>·</span>
                 <span>Avani+ Fares Resort, Baa Atoll</span>
             </div>
@@ -1933,7 +1949,7 @@
         </div>
         <div class="pricing-card">
             <div class="pricing-badge">
-                ✨ Early Confirmation — Pay before Feb 15 for a chance to win $500 credit
+                ✨ Early Confirmation — Pay before March 15 for a chance to win $500 credit
             </div>
             <div class="pricing-amount">
                 <div class="pricing-original">$2,450</div>
@@ -1945,10 +1961,10 @@
                 <p class="pricing-detail">Remaining 70% due 45 days before retreat</p>
             </div>
             <div class="pricing-ctas">
-                <a href="https://wa.me/1234567890?text=I'd%20like%20to%20pay%20the%2030%25%20deposit%20for%20the%20Maldives%20retreat" class="pricing-cta pricing-cta-secondary">
+                <a href="https://wa.me/9613543547?text=I'd%20like%20to%20pay%20the%2030%25%20deposit%20for%20the%20Maldives%20retreat" class="pricing-cta pricing-cta-secondary">
                     Pay 30% Deposit
                 </a>
-                <a href="https://wa.me/1234567890?text=I'd%20like%20to%20pay%20in%20full%20for%20the%20Maldives%20retreat" class="pricing-cta pricing-cta-primary">
+                <a href="https://wa.me/9613543547?text=I'd%20like%20to%20pay%20in%20full%20for%20the%20Maldives%20retreat" class="pricing-cta pricing-cta-primary">
                     Pay in Full
                 </a>
             </div>
@@ -2125,7 +2141,7 @@
                 and is happy to answer any questions.
             </p>
             <div class="final-cta-buttons">
-                <a href="https://wa.me/1234567890?text=I'd%20like%20to%20learn%20more%20about%20the%20Maldives%20retreat" class="final-cta-btn final-cta-btn-primary">
+                <a href="https://wa.me/9613543547?text=I'd%20like%20to%20learn%20more%20about%20the%20Maldives%20retreat" class="final-cta-btn final-cta-btn-primary">
                     <i class="fa-brands fa-whatsapp"></i> Talk to Lina
                 </a>
                 <a href="#checkout" class="final-cta-btn final-cta-btn-secondary">
