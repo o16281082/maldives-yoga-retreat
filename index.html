@@ -152,6 +152,182 @@
             display: block;
         }
 
+        /* Booking Form Popup */
+        #booking-form-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            z-index: 1001;
+            border-top: 4px solid var(--deep-teal);
+        }
+
+        #booking-form-popup.show {
+            display: block;
+            animation: popupFadeIn 0.5s ease-out forwards;
+        }
+
+        #booking-form-popup .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--warm-taupe);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        #booking-form-popup .popup-close:hover {
+            background: var(--sand);
+            color: var(--deep-teal);
+        }
+
+        .booking-form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--deep-teal);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--deep-teal);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--sand);
+            border-radius: 8px;
+            background: white;
+            color: var(--warm-taupe);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--deep-teal);
+            box-shadow: 0 0 0 3px rgba(13, 71, 77, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group-radio {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .form-group-radio label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: var(--warm-taupe);
+            cursor: pointer;
+        }
+
+        .form-group-radio input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .form-submit-btn {
+            background: var(--deep-teal);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .form-submit-btn:hover {
+            background: var(--soft-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .form-submit-btn:disabled {
+            background: var(--sand);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #booking-form-popup {
+                padding: 1.5rem;
+                max-height: 95vh;
+            }
+
+            .booking-form-title {
+                font-size: 1.5rem;
+            }
+
+            .form-group-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Early Bird Banner */
         .early-bird-banner {
             position: fixed;
@@ -2055,10 +2231,10 @@
                 <p class="pricing-detail">Remaining 70% due 45 days before retreat</p>
             </div>
             <div class="pricing-ctas">
-                <a href="https://yoginomads.eu/cart/51493883937051:1?checkout" class="pricing-cta pricing-cta-secondary">
+                <a href="#" class="pricing-cta pricing-cta-secondary" onclick="openBookingForm('30% Deposit', 'https://yoginomads.eu/cart/51493883937051:1?checkout'); return false;">
                     Pay 30% Deposit
                 </a>
-                <a href="https://yoginomads.eu/cart/51493884985627:1?checkout" class="pricing-cta pricing-cta-primary">
+                <a href="#" class="pricing-cta pricing-cta-primary" onclick="openBookingForm('Full Payment', 'https://yoginomads.eu/cart/51493884985627:1?checkout'); return false;">
                     Pay it Fully - Enter the Draw
                 </a>
             </div>
@@ -2412,6 +2588,85 @@
     </div>
     <div id="popup-overlay" onclick="closePopup()"></div>
 
+    <!-- Booking Form Popup -->
+    <div id="booking-form-popup">
+        <button class="popup-close" onclick="closeBookingForm()" aria-label="Close">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <h2 class="booking-form-title">Complete Your Booking</h2>
+        <form id="booking-form" class="booking-form" action="https://formspree.io/f/mdkqrzgp" method="POST">
+            <input type="hidden" name="Payment Type" id="payment-type" value="">
+            
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="first-name">First Name *</label>
+                    <input type="text" id="first-name" name="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name *</label>
+                    <input type="text" id="last-name" name="Last Name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="Phone Number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age *</label>
+                <input type="number" id="age" name="Age" min="18" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Where are you located? *</label>
+                <input type="text" id="location" name="Where are you located?" required>
+            </div>
+
+            <div class="form-group">
+                <label for="social-media">What is YOUR social media handle? (Ideally for Instagram (if not, TikTok). Where can we find you?) *</label>
+                <input type="text" id="social-media" name="What is YOUR social media handle?" placeholder="@yourhandle" required>
+            </div>
+
+            <div class="form-group">
+                <label>I understand that my deposit and any additional payments towards the retreat are non-refundable *</label>
+                <div class="form-group-radio">
+                    <label>
+                        <input type="radio" name="I understand that my deposit and any additional payments towards the retreat are non-refundable" value="Yes" required>
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="I understand that my deposit and any additional payments towards the retreat are non-refundable" value="No" required>
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>I understand that the full price must be paid 45 days BEFORE the retreat begins *</label>
+                <div class="form-group-radio">
+                    <label>
+                        <input type="radio" name="I understand that the full price must be paid 45 days BEFORE the retreat begins" value="Yes" required>
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="I understand that the full price must be paid 45 days BEFORE the retreat begins" value="No" required>
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="form-submit-btn" id="form-submit-btn">
+                Next →
+            </button>
+        </form>
+    </div>
+
     <script>
         // Navbar scroll effect with hide/show on scroll
         let lastScrollY = window.scrollY;
@@ -2529,6 +2784,106 @@
                 showPopup();
             }
         });
+
+        // Booking Form Functions
+        let checkoutUrl = '';
+
+        function openBookingForm(paymentType, url) {
+            const bookingPopup = document.getElementById('booking-form-popup');
+            const bookingOverlay = document.getElementById('popup-overlay');
+            const paymentTypeInput = document.getElementById('payment-type');
+            
+            if (bookingPopup && bookingOverlay) {
+                // Set payment type
+                if (paymentTypeInput) {
+                    paymentTypeInput.value = paymentType;
+                }
+                
+                // Store checkout URL
+                checkoutUrl = url;
+                
+                // Show popup and overlay
+                bookingPopup.classList.add('show');
+                bookingOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBookingForm() {
+            const bookingPopup = document.getElementById('booking-form-popup');
+            const bookingOverlay = document.getElementById('popup-overlay');
+            
+            if (bookingPopup && bookingOverlay) {
+                bookingPopup.classList.remove('show');
+                bookingOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Handle form submission
+        const bookingForm = document.getElementById('booking-form');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('form-submit-btn');
+                const originalText = submitBtn.textContent;
+                
+                // Disable button and show loading
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                // Create form data
+                const formData = new FormData(bookingForm);
+                
+                // Submit to Formspree
+                fetch('https://formspree.io/f/mdkqrzgp', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Success - redirect to checkout
+                        submitBtn.textContent = 'Redirecting...';
+                        setTimeout(() => {
+                            window.location.href = checkoutUrl;
+                        }, 500);
+                    } else {
+                        // Error
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                        alert('There was an error submitting your form. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    // Network error - still redirect (form might have been submitted)
+                    console.error('Error:', error);
+                    submitBtn.textContent = 'Redirecting...';
+                    setTimeout(() => {
+                        window.location.href = checkoutUrl;
+                    }, 500);
+                });
+            });
+        }
+
+        // Close booking form when clicking overlay
+        const bookingOverlayEl = document.getElementById('popup-overlay');
+        if (bookingOverlayEl) {
+            bookingOverlayEl.addEventListener('click', function(e) {
+                // Only close if clicking the overlay itself, not the booking form
+                if (e.target === bookingOverlayEl) {
+                    const bookingPopup = document.getElementById('booking-form-popup');
+                    if (bookingPopup && bookingPopup.classList.contains('show')) {
+                        closeBookingForm();
+                    } else {
+                        closePopup();
+                    }
+                }
+            });
+        }
     </script>
 
 </body>
