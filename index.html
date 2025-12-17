@@ -1461,6 +1461,35 @@
             transform: scale(1.05);
         }
 
+        /* Video mute/unmute button */
+        .video-mute-btn {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .video-mute-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .video-mute-btn i {
+            font-size: 1.1rem;
+        }
+
         /* Responsive for gallery */
         @media (max-width: 1024px) {
             .gallery-sidebyside {
@@ -1786,14 +1815,13 @@
 
             /* Keep section text on one line on mobile */
             .about .section-script {
-                font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+                font-size: clamp(1.1rem, 2.8vw, 1.5rem);
                 white-space: nowrap;
                 max-width: 100%;
-                overflow: hidden;
             }
 
             .about .section-title {
-                font-size: clamp(1.3rem, 3.2vw, 1.7rem);
+                font-size: clamp(1.1rem, 2.8vw, 1.5rem);
                 line-height: 1.4;
             }
 
@@ -1806,7 +1834,7 @@
                 white-space: nowrap;
                 margin-top: 0.2rem;
                 max-width: 100%;
-                overflow: hidden;
+                font-size: clamp(1rem, 2.5vw, 1.4rem);
             }
 
             /* Decrease font size for gallery script text on mobile */
@@ -1852,9 +1880,10 @@
 
             .hero-details {
                 flex-direction: column;
-                gap: 0.3rem;
+                gap: 0;
                 font-weight: 500;
                 font-size: 1.3rem;
+                line-height: 1.1;
             }
 
             .hero-eyebrow {
@@ -1997,7 +2026,7 @@
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Previous edition - SOLD OUT 
+                    Previous edition - <strong>SOLD OUT</strong> 
                 </div>
             </div>
         </div>
@@ -2110,7 +2139,7 @@
             <div class="flow-item">
                 <div class="flow-dot"></div>
                 <div class="flow-time">Evening</div>
-                <div class="flow-activity">Evening DJ nights, cultural evenings,<br/>bonfire & drums, beach cinema</div>
+                <div class="flow-activity">DJ-led nights, cultural evenings,<br/>bonfire & drums, beach cinema</div>
             </div>
         </div>
     </section>
@@ -2155,7 +2184,7 @@
             </div>
             <div>
                 <p class="body-text" style="max-width: 100%;">
-                    Avani+ Fares Maldives is a five-star island resort, part of Minor Hotels, a newly opened luxury resort in the heart of Baa Atoll, 
+                    Avani+ Fares Maldives is a 5* island resort, part of Minor Hotels, a newly opened luxury resort in the heart of Baa Atoll, 
                     a UNESCO Biosphere Reserve. Beachfront pavilion villas, stretch directly onto 
                     white sand with seamless indoor-outdoor living contemporary design & refined service.
                 </p>
@@ -2195,7 +2224,7 @@
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        Five breakfasts half board stay and five dinners
+                        Five breakfasts half board stay and five dinners (Maldivian bonfire & drums night, beach cinema)
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
@@ -2253,24 +2282,48 @@
                     </div>
                 </div>
                 <div class="inclusions-col not-included">
-                    <h3>Not Included</h3>
+                    <h3>Exclusions</h3>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12"/>
                         </svg>
-                        International flights
+                        Flights to and from Malé
                     </div>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12"/>
                         </svg>
-                        Seaplane transfer
+                        Domestic Flights or seaplane transfers
                     </div>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12"/>
                         </svg>
-                        Travel insurance
+                        Travel and medical insurance
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Visa requirements if required
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Optional excursions beyond the included experience
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Spa treatments
+                    </div>
+                    <div class="inclusion-item">
+                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        Alcoholic beverages (unless stated otherwise)
                     </div>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
@@ -2295,7 +2348,7 @@
         </div>
         <div class="pricing-card">
             <div class="pricing-badge">
-                Early Confirmation — Pay before February 15 for a chance to win $500 credit
+                Early Confirmation — Pay before January 30, 2026 for a chance to win $500 credit
             </div>
             <div class="pricing-amount">
                 <div class="pricing-current">$2,175 <span>USD</span></div>
@@ -2343,19 +2396,34 @@
             </div>
             <div class="gallery-sidebyside-content">
                 <div class="gallery-text">
-                    <p class="script">A distinct yoga journey</p>
-                    <p class="subtitle">Multi style modern approach & a daily practice with signature classes</p>
+                    <p class="script">A Distinct Yoga Journey</p>
+                    <p class="subtitle">Multi-style approach & signature classes</p>
                     <div style="margin-top: 1.75rem; text-align: center; max-width: 420px; margin-left: auto; margin-right: auto;">
-                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--deep-teal); font-style: italic; margin-bottom: 0.75rem;">
+                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--deep-teal); font-style: italic; margin-bottom: 0.75rem;">
                             Who is this retreat for?
                         </p>
-                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--warm-taupe); line-height: 1.7;">
-                            <li>All levels, from complete beginners to advanced practitioners</li>
-                            <li>Guests who enjoy a modern -non traditional - approach to yoga</li>
-                            <li>Yogis who appreciate Hatha, Vinyasa, Yin inspired classes</li>
-                            <li>Travelers who appreciate variety, structure, freedom and refined experiences</li>
-                            <li>Solo travelers, couples, and friends looking for an uplifting escape</li>
-                        </ul>
+                        <div style="font-size: 0.95rem; color: var(--warm-taupe); line-height: 1.7;">
+                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
+                                <span class="feature-dot"></span>
+                                All levels, from complete beginners to advanced practitioners
+                            </div>
+                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
+                                <span class="feature-dot"></span>
+                                Guests who enjoy a modern -non traditional - approach to yoga
+                            </div>
+                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
+                                <span class="feature-dot"></span>
+                                Yogis who appreciate Hatha, Vinyasa, Yin inspired classes
+                            </div>
+                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
+                                <span class="feature-dot"></span>
+                                Travelers who appreciate variety, structure, freedom and refined experiences
+                            </div>
+                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
+                                <span class="feature-dot"></span>
+                                Solo travelers, couples, and friends looking for an uplifting escape
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2371,7 +2439,7 @@
             <img src="IMG_7407.webp" alt="Beach bar at golden hour"/>
             <div class="gallery-overlay">
                 <div class="gallery-text">
-                    <p class="script">Lively evenings & celebrations</p>
+                    <p class="script" style="font-weight: 600;">Lively Evenings Await</p>
                     <p class="subtitle">When the sun sets, the island becomes alive</p>
                 </div>
             </div>
@@ -2391,8 +2459,8 @@
                         A space to surrender.<br/>
                         Everything is taken care of.
                     </p>
-                    <p class="subtitle" style="line-height: 1.4; text-align: justify;">A thoughtfully curated blend of modern yoga, movement, fitness, spa rituals, ocean experiences, quiet personal time, vibrant social moments, and soulful evenings — all delivered through intuitive service that anticipates your needs before you ask.<br/>
-                    You simply arrive. We handle the rest.</p>
+                    <p class="subtitle" style="line-height: 1.4; text-align: justify; margin-bottom: 1rem;">A thoughtfully curated blend of modern yoga, movement, fitness, spa rituals, ocean experiences, quiet personal time, vibrant social moments, and soulful evenings — all delivered through intuitive service that anticipates your needs before you ask.</p>
+                    <p class="subtitle" style="line-height: 1.4; text-align: justify; margin-top: 0;">You simply arrive. We handle the rest.</p>
                 </div>
             </div>
         </div>
@@ -2400,14 +2468,20 @@
         <!-- Asymmetric duo -->
         <div class="gallery-section gallery-asymmetric">
             <div class="gallery-asymmetric-img">
-                <video autoplay muted loop playsinline preload="auto">
+                <video autoplay muted loop playsinline preload="auto" id="video-1">
                     <source src="IMG_9643.MP4" type="video/mp4">
                 </video>
+                <button class="video-mute-btn" onclick="toggleMute('video-1', this)" aria-label="Toggle sound">
+                    <i class="fa-solid fa-volume-x"></i>
+                </button>
             </div>
             <div class="gallery-asymmetric-img">
-                <video autoplay muted loop playsinline preload="auto">
+                <video autoplay muted loop playsinline preload="auto" id="video-2">
                     <source src="IMG_9714.MP4" type="video/mp4">
                 </video>
+                <button class="video-mute-btn" onclick="toggleMute('video-2', this)" aria-label="Toggle sound">
+                    <i class="fa-solid fa-volume-x"></i>
+                </button>
             </div>
         </div>
 
@@ -2485,6 +2559,17 @@
                 </div>
                 <div class="faq-answer">
                     <p>Absolutely - we will handle it for you.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What time does the retreat start/end?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p>The retreat begins on April 10 afternoon and ends on April 15 afternoon (exact itinerary will be conveyed before your departure). Early Check In & late Check out is subject to hotel's availability.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -2607,7 +2692,7 @@
         </div>
         <div class="final-cta-content">
             <p class="section-script">Ready to embark on a lifetime journey?</p>
-            <h2 class="section-title">This retreat is best explained <em>in conversation.</em></h2>
+            <h2 class="section-title">This retreat is best explained<br><em style="display: block; text-align: center; margin-top: 0.3rem;">in conversation.</em></h2>
             <p class="final-cta-text">
                 Reach out to Lina directly. She personally handles all bookings 
                 and is happy to answer any questions.
@@ -2961,6 +3046,22 @@
                     }
                 }
             });
+        }
+
+        // Video mute/unmute toggle function
+        function toggleMute(videoId, button) {
+            const video = document.getElementById(videoId);
+            const icon = button.querySelector('i');
+            
+            if (video.muted) {
+                video.muted = false;
+                icon.classList.remove('fa-volume-x');
+                icon.classList.add('fa-volume-high');
+            } else {
+                video.muted = true;
+                icon.classList.remove('fa-volume-high');
+                icon.classList.add('fa-volume-x');
+            }
         }
     </script>
 
