@@ -37,8 +37,16 @@
             box-sizing: border-box;
         }
 
+        /* Prevent horizontal overflow */
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -47,6 +55,8 @@
             color: #4A4A4A;
             background: var(--cream);
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
             line-height: 1.7;
             padding-top: 7rem;
         }
@@ -533,13 +543,14 @@
             color: white;
             padding: 0 1rem;
             animation: fadeInUp 1.2s ease-out;
-            margin-top: 2rem;
+            margin-top: -2rem;
         }
 
         .hero-eyebrow {
             font-family: 'Pinyon Script', cursive;
             font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 0.5rem;
+            margin-top: -60px;
             opacity: 0.95;
             animation: drift 6s ease-in-out infinite;
         }
@@ -564,6 +575,7 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
             font-size: 1.1rem;
             font-style: italic;
             opacity: 0.9;
@@ -650,6 +662,8 @@
         .section-title em {
             font-style: italic;
             font-weight: 400;
+            font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+            white-space: nowrap;
         }
 
         .body-text {
@@ -834,6 +848,31 @@
             font-size: 0.85rem;
             color: var(--warm-taupe);
             margin-top: 0.25rem;
+        }
+
+        .founder-instagram {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .founder-instagram a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--deep-teal);
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-teal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .founder-instagram a:hover {
+            background: var(--deep-teal);
+            color: white;
+            transform: scale(1.1);
         }
 
         /* Daily Flow */
@@ -1267,7 +1306,7 @@
 
         .gallery-text .script {
             font-family: 'Pinyon Script', cursive;
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(1.8rem, 4.5vw, 3.5rem);
             line-height: 1.2;
             text-shadow: 0 4px 30px rgba(0,0,0,0.3);
             animation: fadeIn 1s ease-out;
@@ -1745,6 +1784,36 @@
                 line-height: 1.3;
             }
 
+            /* Keep section text on one line on mobile */
+            .about .section-script {
+                font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+                white-space: nowrap;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .about .section-title {
+                font-size: clamp(1.3rem, 3.2vw, 1.7rem);
+                line-height: 1.4;
+            }
+
+            .about .section-title br {
+                display: block;
+            }
+
+            .about .section-title em {
+                display: block;
+                white-space: nowrap;
+                margin-top: 0.2rem;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            /* Decrease font size for gallery script text on mobile */
+            .gallery-text .script {
+                font-size: clamp(1.3rem, 3.5vw, 2.5rem);
+            }
+
             .mobile-menu-toggle {
                 display: flex;
             }
@@ -1785,11 +1854,15 @@
                 flex-direction: column;
                 gap: 0.3rem;
                 font-weight: 500;
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .hero-eyebrow {
-                margin-top: -55px;
+                margin-top: -120px;
+                font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+                white-space: nowrap;
+                max-width: 100%;
+                overflow: hidden;
             }
 
             .hero {
@@ -1924,7 +1997,7 @@
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Previous edition - Sold out 
+                    Previous edition - SOLD OUT 
                 </div>
             </div>
         </div>
@@ -1995,6 +2068,11 @@
                     <div class="stat-number">10+</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
+            </div>
+            <div class="founder-instagram">
+                <a href="https://www.instagram.com/fromyogatolina/" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
             </div>
         </div>
         <div class="founder-image">
@@ -2080,9 +2158,6 @@
                     Avani+ Fares Maldives is a five-star island resort, part of Minor Hotels, a newly opened luxury resort in the heart of Baa Atoll, 
                     a UNESCO Biosphere Reserve. Beachfront pavilion villas, stretch directly onto 
                     white sand with seamless indoor-outdoor living contemporary design & refined service.
-                </p>
-                <p class="body-text" style="max-width: 100%; font-style: italic; font-weight: 300; margin-top: 1rem;">
-                    Spa treatments and ocean excursions can be pre-booked at special retreat rates (only applicable for bookings before travel - details shared post booking)
                 </p>
             </div>
         </div>
@@ -2256,7 +2331,7 @@
             <img src="IMG_0796.webp" alt="Aerial view of Maldives beach and villas"/>
             <div class="gallery-overlay">
                 <div class="gallery-text">
-                    <p class="script">A proven Yogi Nomads experience, tested, lived, and 5-star rated by 40 guests</p>
+                    <p class="script">A proven Yogi Nomads experience, tested, lived, and 5* rated by 40 guests</p>
                 </div>
             </div>
         </div>
@@ -2312,7 +2387,10 @@
             </div>
             <div class="gallery-sidebyside-content">
                 <div class="gallery-text">
-                    <p class="script" style="font-size: clamp(1.5rem, 3vw, 2.5rem);">A space to surrender. Everything is taken care of.</p>
+                    <p class="script" style="font-size: clamp(1.5rem, 3vw, 2.5rem); text-align: center;">
+                        A space to surrender.<br/>
+                        Everything is taken care of.
+                    </p>
                     <p class="subtitle" style="line-height: 1.4; text-align: justify;">A thoughtfully curated blend of modern yoga, movement, fitness, spa rituals, ocean experiences, quiet personal time, vibrant social moments, and soulful evenings — all delivered through intuitive service that anticipates your needs before you ask.<br/>
                     You simply arrive. We handle the rest.</p>
                 </div>
@@ -2422,7 +2500,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    DO I NEED A CERTAIN LEVEL OF FITNESS TO JOIN?
+                    Do I need a certain level of fitness to join?
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -2466,7 +2544,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    DO I NEED A VISA TO ENTER THE MALDIVES?
+                    Do I need a visa to enter the Maldives?
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -2477,7 +2555,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    WHAT IS IMUGA AND DO I NEED TO COMPLETE IT?
+                    What is IMUGA and do I need to complete it?
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -2488,7 +2566,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    WILL YOU SHARE A DETAILED DAILY PROGRAM?
+                    Will you share a detailed daily program?
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -2499,7 +2577,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    DO I HAVE TO JOIN ALL ACTIVITIES AND SESSIONS?
+                    Do I have to join all activities and sessions?
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -2510,7 +2588,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    IMPORTANT TRAVEL NOTE
+                    Important travel note
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -2555,7 +2633,7 @@
                 <img src="Beige-and-Blue.png" alt="YogiNomads logo" class="footer-logo-img" />
             </span>
             <div class="footer-instagram">
-                <a href="https://instagram.com/yoginomads" target="_blank" rel="noopener">
+                <a href="https://www.instagram.com/yogi.nomads/" target="_blank" rel="noopener">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
             </div>
