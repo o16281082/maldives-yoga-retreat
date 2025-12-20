@@ -14,7 +14,7 @@
     <link rel="preload" as="image" href="IMG_7423.webp" fetchpriority="high">
     <link rel="preload" as="image" href="Beige-and-Blue.png">
     <link rel="preload" as="image" href="Black-and-Blue.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400&family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
     <style>
         :root {
@@ -398,7 +398,7 @@
             text-align: center;
             padding: 0.75rem 1.25rem;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
+            font-size: 1.4rem;
             font-style: italic;
             letter-spacing: 0.05em;
             animation: shimmer 3s ease-in-out infinite;
@@ -664,6 +664,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
             font-style: italic;
+            font-weight: 600;
             color: rgba(255,255,255,0.8);
             text-decoration: none;
             padding: 1rem 2.5rem;
@@ -777,11 +778,33 @@
         }
 
         .feature-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--sunset-coral);
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about .feature-dot {
+            background: none;
+            border-radius: 0;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about .feature-dot::before {
+            display: none;
+        }
+
+        .about .feature-item svg.check {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            stroke: var(--deep-teal);
         }
 
         /* Experience Cards */
@@ -866,6 +889,18 @@
             order: 1;
         }
 
+        .founder .section-script {
+            font-size: clamp(2.16rem, 3.6vw, 3rem);
+        }
+
+        .founder .section-title {
+            font-size: clamp(2.4rem, 4.8vw, 3.84rem);
+        }
+
+        .founder .body-text {
+            font-size: 1.26rem;
+        }
+
         .founder-image {
             position: relative;
             overflow: hidden;
@@ -893,14 +928,14 @@
 
         .stat-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 300;
             color: var(--deep-teal);
             line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 1.02rem;
             color: var(--warm-taupe);
             margin-top: 0.25rem;
         }
@@ -933,7 +968,8 @@
         /* Daily Flow */
         .daily-flow {
             padding: 6rem 4%;
-            background: var(--sand);
+            background: var(--deep-teal);
+            overflow-x: visible;
         }
 
         .daily-flow-header {
@@ -945,20 +981,14 @@
             display: flex;
             justify-content: center;
             gap: 0;
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             position: relative;
+            padding: 0 2rem;
         }
 
         .flow-timeline::before {
-            content: '';
-            position: absolute;
-            top: 35px;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: var(--rose-gold);
-            opacity: 0.5;
+            display: none;
         }
 
         .flow-item {
@@ -966,6 +996,8 @@
             text-align: center;
             padding: 0 1rem;
             position: relative;
+            min-width: 0;
+            overflow: visible;
         }
 
         .flow-dot {
@@ -979,24 +1011,61 @@
         }
 
         .flow-time {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.3rem;
-            font-style: italic;
-            color: var(--deep-teal);
+            font-weight: bold;
+            font-style: normal;
+            color: var(--soft-gold);
             margin-bottom: 0.5rem;
         }
 
         .flow-activity {
-            font-size: 0.9rem;
-            color: var(--warm-taupe);
+            font-size: 1.44rem;
+            color: white;
             line-height: 1.5;
+        }
+
+        .flow-image-box {
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .flow-image-slideshow {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .flow-image-slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .flow-image-slideshow img.active {
+            opacity: 1;
+        }
+
+        .flow-item:hover .flow-image-slideshow img {
+            animation: none;
         }
 
         /* Testimonials */
         .testimonials {
             position: relative;
             padding: 6rem 4%;
-            background: var(--deep-teal);
+            background: var(--sand);
             overflow: hidden;
         }
 
@@ -1006,11 +1075,11 @@
         }
 
         .testimonials-header .section-script {
-            color: var(--soft-gold);
+            color: var(--deep-teal);
         }
 
         .testimonials-header .section-title {
-            color: white;
+            color: var(--deep-teal);
         }
 
         .testimonials-grid {
@@ -1022,7 +1091,7 @@
         }
 
         .testimonial-card {
-            background: rgba(255,255,255,0.08);
+            background: rgba(26,95,94,0.1);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 2rem;
@@ -1033,7 +1102,7 @@
             font-family: 'Lato', sans-serif;
             font-size: 1.15rem;
             font-style: italic;
-            color: rgba(255,255,255,0.9);
+            color: var(--warm-taupe);
             line-height: 1.7;
             margin-bottom: 1.5rem;
         }
@@ -1041,7 +1110,7 @@
         .testimonial-author {
             font-family: 'Lato', sans-serif;
             font-size: 1.5rem;
-            color: var(--soft-gold);
+            color: var(--deep-teal);
         }
 
         /* Video Testimonials */
@@ -1108,7 +1177,11 @@
             gap: 4rem;
             max-width: 1300px;
             margin: 0 auto 3.5rem;
-            align-items: end;
+            align-items: start;
+        }
+
+        .villas-header .section-title {
+            font-weight: 600;
         }
 
         .villas-gallery {
@@ -1172,6 +1245,7 @@
 
         .inclusions-header .section-script {
             color: var(--soft-gold);
+            font-weight: 600;
         }
 
         .inclusions-header .section-title {
@@ -1385,6 +1459,11 @@
             overflow: hidden;
         }
 
+        .section-4 {
+            height: 70.38vh;
+            min-height: 414px;
+        }
+
         .gallery-fullbleed img,
         .gallery-fullbleed video {
             width: 100%;
@@ -1409,6 +1488,35 @@
             text-align: center;
             color: white;
             padding: 2rem;
+        }
+
+        .gallery-text .section-script {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3);
+            font-size: clamp(2.07rem, 3.45vw, 2.875rem);
+        }
+
+        .gallery-text .section-title {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .section-4 .gallery-overlay {
+            align-items: flex-start;
+            padding-top: 3rem;
+        }
+
+        .section-4 .gallery-text .section-script {
+            color: var(--deep-teal);
+            text-shadow: none;
+            font-weight: 600;
+        }
+
+        .section-4 .gallery-text .section-title {
+            font-size: clamp(1.15rem, 2.3vw, 1.84rem);
+            color: var(--deep-teal);
+            text-shadow: none;
+            font-weight: 600;
         }
 
         .gallery-text .script {
@@ -1638,6 +1746,28 @@
                 min-height: 400px;
             }
 
+            .section-4 {
+                height: 57.96vh;
+                min-height: 331.2px;
+            }
+
+            .section-4 .gallery-overlay {
+                padding-top: 2rem;
+            }
+
+            .section-4 .gallery-text .section-script {
+                font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+                line-height: 1.4;
+                color: var(--deep-teal);
+                font-weight: 600;
+            }
+
+            .section-4 .gallery-text .section-title {
+                font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+                color: var(--deep-teal);
+                font-weight: 600;
+            }
+
             .gallery-asymmetric-img {
                 height: 60vh;
                 min-height: 350px;
@@ -1653,6 +1783,10 @@
         .faq-header {
             text-align: center;
             margin-bottom: 3rem;
+        }
+
+        .faq-header .section-script {
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .faq-grid {
@@ -1973,10 +2107,17 @@
             .flow-timeline {
                 flex-direction: column;
                 gap: 2rem;
+                padding: 0;
             }
 
             .flow-timeline::before {
                 display: none;
+            }
+
+            .flow-image-box {
+                width: 240px;
+                height: 240px;
+                margin-bottom: 0.75rem;
             }
 
             .pricing-ctas {
@@ -1987,7 +2128,7 @@
         @media (max-width: 768px) {
             .early-bird-banner {
                 padding: 0.3rem 0.46rem;
-                font-size: 0.92rem;
+                font-size: 0.74rem;
                 line-height: 1.3;
             }
 
@@ -2129,7 +2270,7 @@
 
     <!-- Early Bird Banner -->
     <div class="early-bird-banner">
-        Pay in Full Today or by March 31 & Enter the Draw to WIN Your Maldives Yoga Retreat for FREE
+        Complete full payment before January 31 & enter the draw to Win this retreat back!
     </div>
 
     <!-- Navigation -->
@@ -2139,10 +2280,6 @@
             <img src="Black-and-Blue.png" alt="YogiNomads logo" class="logo-img logo-img--black" />
         </a>
         <div class="nav-links">
-            <a href="#about">The Experience</a>
-            <a href="#founder">Meet Lina</a>
-            <a href="#villas">The Villas</a>
-            <a href="#pricing">I WANT A FREE RETREAT</a>
             <a href="https://wa.me/9613543547" class="nav-cta">
                 <i class="fa-brands fa-whatsapp"></i> Inquire
             </a>
@@ -2162,7 +2299,7 @@
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
-            <p class="hero-eyebrow">A signature retreat by Yogi Nomads</p>
+            <p class="hero-eyebrow">A Signature Experience by Yogi Nomads</p>
             <h1 class="hero-title">
                 Maldives Luxury<br/>
                 <em>Yoga Retreat</em>
@@ -2184,37 +2321,51 @@
             <img src="IMG_7530.webp" alt="Woman floating in crystal clear Maldives water"/>
         </div>
         <div class="about-content">
-            <h2 class="section-title">
+            <h2 class="section-title" style="font-weight: 600;">
                 Why This Retreat?
             </h2>
-            <p class="section-script" style="font-size: clamp(1.1rem, 2.3vw, 1.5rem); line-height: 1.1;">A founder-led, luxury island retreat blending modern yoga, yoga to music immersions, ocean living, lively evenings, and refined community experiences — designed so everything is taken care of and you can simply arrive & enjoy.</p>
+            <p class="section-script" style="font-size: clamp(1rem, 2vw, 1.35rem); line-height: 1.1; text-align: justify;">A founder-led, luxury island retreat blending modern yoga, yoga to music immersions, ocean living, lively evenings, and refined community experiences — designed so everything is taken care of and you can simply arrive & enjoy.</p>
             <div class="feature-list">
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     Set in one of the most beautiful &amp; exclusive destinations in the world in a 5* luxury resort
                 </div>
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     A group where connection feels natural and easy
                 </div>
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     Ideal for solo travelers, couples, or friends — many arrive alone and feel at home quickly
                 </div>
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     A proven Yogi Nomads format, previously hosted and sold out with 40 guests
                 </div>
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     A distinctive yoga experience blending modern movement, music-led signature classes, and signature multi-style practices unique to this retreat
                 </div>
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     A seamless balance of comfort, beauty, movement, freedom, rest, and meaningful connections
                 </div>
                 <div class="feature-item">
-                    <span class="feature-dot"></span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
                     A chance to win your retreat back if you confirm before January 31, 2026
                 </div>
             </div>
@@ -2224,31 +2375,74 @@
     <!-- Daily Flow -->
     <section class="daily-flow">
         <div class="daily-flow-header">
-            <p class="section-script">A Day in Paradise</p>
-            <h2 class="section-title">Sample <em>Daily Flow</em></h2>
+            <p class="section-script" style="font-family: 'Cormorant Garamond', serif; color: var(--soft-gold); font-weight: 600;">The Experience · A Day in Paradise</p>
+            <h2 class="section-title" style="font-family: 'Montserrat', sans-serif; font-size: clamp(1rem, 2vw, 1.6rem); font-weight: 500; color: white;">Structured enough to feel held. Flexible enough to feel free.</h2>
+            <p class="body-text" style="max-width: 800px; margin: 0 auto; text-align: justify; font-size: clamp(1rem, 2vw, 1.6rem); line-height: 1.6; color: white; margin-top: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 500;">
+                A thoughtfully curated daily rhythm balancing movement, island living, and time to simply enjoy. Every detail is curated in advance, so you don't need to think, organize, or manage — you arrive and settle into the experience.
+            </p>
         </div>
         <div class="flow-timeline">
             <div class="flow-item">
+                <div class="flow-image-box">
+                    <div class="flow-image-slideshow" data-slideshow="0">
+                        <img src="" alt="Morning yoga session 1" class="active" />
+                        <img src="" alt="Morning yoga session 2" />
+                        <img src="" alt="Morning yoga session 3" />
+                        <img src="" alt="Morning yoga session 4" />
+                    </div>
+                </div>
                 <div class="flow-dot"></div>
                 <div class="flow-time">Morning</div>
                 <div class="flow-activity">Signature yoga<br/>session</div>
             </div>
             <div class="flow-item">
+                <div class="flow-image-box">
+                    <div class="flow-image-slideshow" data-slideshow="1">
+                        <img src="" alt="Breakfast and island time 1" class="active" />
+                        <img src="" alt="Breakfast and island time 2" />
+                        <img src="" alt="Breakfast and island time 3" />
+                        <img src="" alt="Breakfast and island time 4" />
+                    </div>
+                </div>
                 <div class="flow-dot"></div>
                 <div class="flow-time">Late Morning</div>
                 <div class="flow-activity">Breakfast &<br/>island time</div>
             </div>
             <div class="flow-item">
+                <div class="flow-image-box">
+                    <div class="flow-image-slideshow" data-slideshow="2">
+                        <img src="" alt="Beach activities 1" class="active" />
+                        <img src="" alt="Beach activities 2" />
+                        <img src="" alt="Beach activities 3" />
+                        <img src="" alt="Beach activities 4" />
+                    </div>
+                </div>
                 <div class="flow-dot"></div>
                 <div class="flow-time">Afternoon</div>
                 <div class="flow-activity">Beach, snorkeling,<br/>spa, kayaking, or excursions</div>
             </div>
             <div class="flow-item">
+                <div class="flow-image-box">
+                    <div class="flow-image-slideshow" data-slideshow="3">
+                        <img src="" alt="Sound healing and yoga 1" class="active" />
+                        <img src="" alt="Sound healing and yoga 2" />
+                        <img src="" alt="Sound healing and yoga 3" />
+                        <img src="" alt="Sound healing and yoga 4" />
+                    </div>
+                </div>
                 <div class="flow-dot"></div>
                 <div class="flow-time">Late Afternoon</div>
                 <div class="flow-activity">Sound healing, musical yoga flow,<br/>and fitness classes</div>
             </div>
             <div class="flow-item">
+                <div class="flow-image-box">
+                    <div class="flow-image-slideshow" data-slideshow="4">
+                        <img src="" alt="Evening activities 1" class="active" />
+                        <img src="" alt="Evening activities 2" />
+                        <img src="" alt="Evening activities 3" />
+                        <img src="" alt="Evening activities 4" />
+                    </div>
+                </div>
                 <div class="flow-dot"></div>
                 <div class="flow-time">Evening</div>
                 <div class="flow-activity">DJ-led nights, cultural evenings,<br/>bonfire & drums, beach cinema</div>
@@ -2256,69 +2450,51 @@
         </div>
     </section>
 
+    <!-- Full-bleed final image -->
+    <div class="gallery-section gallery-fullbleed section-4">
+        <img src="May24.jpg" alt="A Proven Yogi Nomads Experience"/>
+        <div class="gallery-overlay">
+            <div class="gallery-text">
+                <p class="section-script">A Proven Yogi Nomads Experience</p>
+                <h2 class="section-title">Previous Maldives Edition — SOLD OUT</h2>
+            </div>
+        </div>
+    </div>
+
     <!-- Testimonials -->
     <section class="testimonials">
-        <div class="testimonials-header">
-            <p class="section-script">A Proven Yogi Nomads Experience</p>
-            <h2 class="section-title" style="font-size: clamp(1rem, 2vw, 1.6rem);">Previous Maldives Edition — SOLD OUT with 40 international guests</h2>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "The retreat was exceptionally well planned yet never felt rigid. 
-                    A beautiful balance between structure and freedom to simply enjoy."
-                </p>
-                <p class="testimonial-author">— Claudine S.</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "The yoga classes were truly unique — creative, intelligent, and adaptable. 
-                    They stood out from anything I've experienced before."
-                </p>
-                <p class="testimonial-author">— Rita G.</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "I came alone and within days it felt like a genuine, warm group — 
-                    connected, relaxed, and completely at ease."
-                </p>
-                <p class="testimonial-author">— Noura H.</p>
-            </div>
-        </div>
         <div class="testimonials-videos">
             <div class="videos-grid">
                 <div class="video-card">
                     <video autoplay muted loop playsinline preload="auto">
-                        <source src="IMG_9643.MP4" type="video/mp4">
+                        <source src="1.webm" type="video/webm">
                     </video>
                 </div>
                 <div class="video-card">
                     <video autoplay muted loop playsinline preload="auto">
-                        <source src="IMG_9714.MP4" type="video/mp4">
+                        <source src="2.webm" type="video/webm">
                     </video>
                 </div>
                 <div class="video-card">
                     <video autoplay muted loop playsinline preload="auto">
-                        <source src="Img9714.webm" type="video/webm">
-                        <source src="IMG_9714.MP4" type="video/mp4">
+                        <source src="1220.webm" type="video/webm">
                     </video>
                 </div>
             </div>
             <div class="videos-slideshow">
                 <div class="video-card active">
                     <video autoplay muted loop playsinline preload="auto">
-                        <source src="IMG_9643.MP4" type="video/mp4">
+                        <source src="1.webm" type="video/webm">
                     </video>
                 </div>
                 <div class="video-card">
                     <video muted loop playsinline preload="auto">
-                        <source src="IMG_9714.MP4" type="video/mp4">
+                        <source src="2.webm" type="video/webm">
                     </video>
                 </div>
                 <div class="video-card">
                     <video muted loop playsinline preload="auto">
-                        <source src="Img9714.webm" type="video/webm">
-                        <source src="IMG_9714.MP4" type="video/mp4">
+                        <source src="1220.webm" type="video/webm">
                     </video>
                 </div>
                 <div class="slideshow-arrows">
@@ -2340,20 +2516,13 @@
             <p class="section-script">Meet Your Host</p>
             <h2 class="section-title">Lina Aoun</h2>
             <p class="body-text">
-                Founder of Yogi Nomads and a 200-hr certified Sivananda yoga teacher. 
-                Her teaching style is contemporary, grounded, innovative and beautifully woven with music — 
-                designed to support both beginners and advanced practitioners.
+                Founder of Yogi Nomads
             </p>
             <p class="body-text">
-                With over 5 years of experience hosting retreats across the globe, 
-                Lina builds every escape like a life chapter: layered, rich, full of color and clarity. 
-                Every Yogi Nomads journey she creates is meticulously planned down to the tiniest detail — 
-                not just where you'll go, but how you'll feel when you get there. 
-                Her work blends yoga, travel, self-inquiry, and curated community — 
-                not to disconnect from life, but to re-enter it differently.
+                Lina has hosted over 150 retreats, welcoming thousands of guests into experiences that blend yoga, travel & curated community. Her approach is modern, grounded, and music-driven — designed to feel intelligent, embodied, and accessible.
             </p>
             <p class="body-text">
-                You won't just remember the places she takes you to. You'll remember every class with her
+                Each Yogi Nomads retreat is personally led and thoughtfully crafted to feel seamless, warm, and deeply human.
             </p>
             <div class="founder-stats">
                 <div class="stat">
@@ -2380,50 +2549,42 @@
         </div>
     </section>
 
-    <!-- Experience Cards -->
-    <section class="experience">
-        <div class="experience-header">
-            <p class="section-script">What Awaits You</p>
-            <h2 class="section-title">Three Pillars of <em>Presence</em></h2>
+    <!-- Side by side: Image + Text -->
+    <div class="gallery-section gallery-sidebyside">
+        <div class="gallery-sidebyside-img">
+            <img src="IMG_7426.webp" alt="Yoga practitioners in cobra pose"/>
         </div>
-        <div class="experience-grid">
-            <div class="exp-card">
-                <img src="IMG_7532.webp" alt="Luxury resort pool at sunset"/>
-                <div class="exp-card-overlay">
-                    <h3 class="exp-card-title">Luxury Meets Wellness</h3>
-                    <p class="exp-card-desc">Five star island living, beachfront villas & a vibrant house reef</p>
-                </div>
-            </div>
-            <div class="exp-card">
-                <img src="IMG_9629.webp" alt="Intimate yoga moment on beach"/>
-                <div class="exp-card-overlay">
-                    <h3 class="exp-card-title">Founder-Led Journey</h3>
-                    <p class="exp-card-desc">Personal, modern, music-driven practice</p>
-                </div>
-            </div>
-            <div class="exp-card">
-                <img src="IMG_7534.webp" alt="Beach dining at sunset"/>
-                <div class="exp-card-overlay">
-                    <h3 class="exp-card-title">Depth & Enjoyment</h3>
-                    <p class="exp-card-desc">Calm and celebration, woven together</p>
+        <div class="gallery-sidebyside-content">
+            <div class="gallery-text">
+                <p class="script">A Distinct Yoga Journey</p>
+                <div style="margin-top: 1.75rem; text-align: center; max-width: 420px; margin-left: auto; margin-right: auto;">
+                    <ul style="font-size: 1.14rem; color: var(--deep-teal); line-height: 1.5; list-style-position: inside; padding-left: 0; text-align: left; font-weight: 600;">
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Multi-style yoga program (Hatha, Vinyasa, Yin, Yoga Nidra-inspired)</li>
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Signature, music-led classes unique to Yogi Nomads</li>
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Modern, non-traditional approach — refined and inclusive</li>
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Adaptable for all levels - beginners and advanced practitioners alike</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Villas Section -->
     <section class="villas" id="villas">
         <div class="villas-header">
             <div>
-                <p class="section-script">Your Sanctuary</p>
-                <h2 class="section-title">The Resort & <em>Villas</em></h2>
+                <h2 class="section-title">Your Sanctuary · The Resort</h2>
             </div>
             <div>
-                <p class="body-text" style="max-width: 100%;">
-                    Avani+ Fares Maldives is a 5* island resort, part of Minor Hotels, a newly opened luxury resort in the heart of Baa Atoll, 
-                    a UNESCO Biosphere Reserve. Beachfront pavilion villas, stretch directly onto 
-                    white sand with seamless indoor-outdoor living contemporary design & refined service.
+                <p class="body-text" style="max-width: 100%; font-family: 'Poppins', sans-serif; color: var(--deep-teal); font-weight: 600;">
+                    Avani+ Fares Maldives is a 5-star island resort by Minor Hotels, located in the heart of Baa Atoll, a UNESCO Biosphere Reserve.
                 </p>
+                <ul style="max-width: 100%; font-family: 'Poppins', sans-serif; color: var(--deep-teal); font-weight: 500; list-style-position: inside; padding-left: 0; margin-top: 0.5rem;">
+                    <li style="margin-bottom: 0.25rem;">Beachfront pavilion villas with contemporary design</li>
+                    <li style="margin-bottom: 0.25rem;">Seamless indoor-outdoor living and experiences</li>
+                    <li style="margin-bottom: 0.25rem;">Refined service and vibrant house reef</li>
+                    <li style="margin-bottom: 0.25rem;">Calm luxury without excess or crowds</li>
+                </ul>
             </div>
         </div>
         <div class="villas-gallery">
@@ -2454,19 +2615,19 @@
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        Five nights at Avani+ Fares Maldives Resort
+                        5 nights at Avani+ Fares Maldives
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        Five breakfasts half board stay and five dinners (Maldivian bonfire & drums night, beach cinema)
+                        Half board: daily breakfast and dinner
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        Daily multi-style yoga program with Lina (Hatha, Vinyasa, Yin, Yoga Nidra inspired)
+                        Daily multi-style yoga program with Lina
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
@@ -2478,13 +2639,13 @@
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        Two sound healing experiences
+                        2 sound healing experiences
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        One kayaking session
+                        1 kayaking session
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
@@ -2496,13 +2657,13 @@
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        DJ evenings, bonfire, drums & beach cinema
+                        DJ evenings, bonfire & drums night, beach cinema
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        Two fitness sessions with AvaniFit
+                        2 fitness sessions with AvaniFit
                     </div>
                     <div class="inclusion-item">
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
@@ -2514,62 +2675,31 @@
                         <svg class="check" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M20 6L9 17l-5-5"/>
                         </svg>
-                        All resort facilities & house reef access
+                        Full access to resort facilities & house reef
                     </div>
                 </div>
                 <div class="inclusions-col not-included">
-                    <h3>Exclusions</h3>
+                    <h3>Additives</h3>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12"/>
                         </svg>
-                        Flights to and from Malé
+                        Flights to the Island
                     </div>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12"/>
                         </svg>
-                        Domestic Flights or seaplane transfers
+                        Travel insurance
                     </div>
                     <div class="inclusion-item">
                         <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12"/>
                         </svg>
-                        Travel and medical insurance
-                    </div>
-                    <div class="inclusion-item">
-                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
-                        </svg>
-                        Visa requirements if required
-                    </div>
-                    <div class="inclusion-item">
-                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
-                        </svg>
-                        Optional excursions beyond the included experience
-                    </div>
-                    <div class="inclusion-item">
-                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
-                        </svg>
-                        Spa treatments
-                    </div>
-                    <div class="inclusion-item">
-                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
-                        </svg>
-                        Alcoholic beverages (unless stated otherwise)
-                    </div>
-                    <div class="inclusion-item">
-                        <svg class="x" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
-                        </svg>
-                        Personal expenses
+                        Personal expenses & beverages
                     </div>
                     <p class="inclusions-note">
-                        Spa treatments and ocean excursions can be pre-booked at special 
-                        retreat rates. Availability is limited and sessions tend to fill quickly.
+                        Special retreat rates for prebooked spa and ocean excursions. Availability is limited.
                     </p>
                 </div>
             </div>
@@ -2614,56 +2744,6 @@
          VISUAL GALLERY - Editorial Dream Sequence
          ============================================ -->
     <section class="visual-gallery">
-
-        <!-- Full-bleed image with text overlay -->
-        <div class="gallery-section gallery-fullbleed">
-            <img src="IMG_0796.webp" alt="Aerial view of Maldives beach and villas"/>
-            <div class="gallery-overlay">
-                <div class="gallery-text">
-                    <p class="script">A proven Yogi Nomads experience, tested, lived, and 5* rated by 40 guests</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Side by side: Image + Text -->
-        <div class="gallery-section gallery-sidebyside">
-            <div class="gallery-sidebyside-img">
-                <img src="IMG_7426.webp" alt="Yoga practitioners in cobra pose"/>
-            </div>
-            <div class="gallery-sidebyside-content">
-                <div class="gallery-text">
-                    <p class="script">A Distinct Yoga Journey</p>
-                    <p class="subtitle">Multi-style approach & signature classes</p>
-                    <div style="margin-top: 1.75rem; text-align: center; max-width: 420px; margin-left: auto; margin-right: auto;">
-                        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--deep-teal); font-style: italic; margin-bottom: 0.75rem;">
-                            Who is this retreat for?
-                        </p>
-                        <div style="font-size: 0.95rem; color: var(--warm-taupe); line-height: 1.7;">
-                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
-                                <span class="feature-dot"></span>
-                                All levels, from complete beginners to advanced practitioners
-                            </div>
-                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
-                                <span class="feature-dot"></span>
-                                Guests who enjoy a modern -non traditional - approach to yoga
-                            </div>
-                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
-                                <span class="feature-dot"></span>
-                                Yogis who appreciate Hatha, Vinyasa, Yin inspired classes
-                            </div>
-                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
-                                <span class="feature-dot"></span>
-                                Travelers who appreciate variety, structure, freedom and refined experiences
-                            </div>
-                            <div class="feature-item" style="font-family: 'Lato', sans-serif; font-size: 0.95rem; font-style: normal; color: var(--warm-taupe);">
-                                <span class="feature-dot"></span>
-                                Solo travelers, couples, and friends looking for an uplifting escape
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Full-bleed video placeholder (replace src with actual video) -->
         <div class="gallery-section gallery-fullbleed gallery-video-container">
@@ -2739,7 +2819,6 @@
     <section class="faq" id="faq">
         <div class="faq-header">
             <p class="section-script">Questions?</p>
-            <h2 class="section-title">Frequently <em>Asked</em></h2>
         </div>
         <div class="faq-grid">
             <div class="faq-item">
@@ -2750,7 +2829,7 @@
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p>Absolutely. All sessions are multi-level and accessible. This retreat is designed for anyone who wants to experience the Maldives in a meaningful way — whether you practice yoga daily or not at all.</p>
+                    <p>Yes. All sessions are adaptable and accessible.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -2761,7 +2840,7 @@
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes. The Fusion and Minimalist Flow sessions offer depth and challenge for experienced yogis, while remaining accessible to others in the group.</p>
+                    <p>Yes. Variations and depth are always offered.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -2772,62 +2851,18 @@
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p>Many guests come solo and quickly feel at home within the group. The warmth of the Yogi Nomads community means you'll never feel alone — connections form naturally and beautifully.</p>
+                    <p>Absolutely. Many guests do and feel at ease quickly.</p>
                 </div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">
-                    What about dietary requirements?
+                    Are flights and transfers included?
                     <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p>All dietary preferences are accommodated including plant-based, pescatarian, gluten-free, and dairy-free. The resort offers multiple dining venues with fresh, tropical ingredients.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Can I extend my stay?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely - we will handle it for you.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    What time does the retreat start/end?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>The retreat begins on April 10 afternoon and ends on April 15 afternoon (exact itinerary will be conveyed before your departure). Early Check In & late Check out is subject to hotel's availability.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Can I book my private villa?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, single villa options are available for a supplement of $875.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Do I need a certain level of fitness to join?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Guests should be in generally good health and comfortable with light to moderate physical activity. Our program is designed to be adaptable, and you're always free to participate at your own pace. If you have any medical conditions, injuries, or special considerations, please let us know in advance so we can support you appropriately.</p>
+                    <p>No. We assist with seaplane bookings to match your flights. You can benefit from Special retreat-only rates too.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -2838,51 +2873,7 @@
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes. Travel insurance is mandatory. All payments are non-refundable and non-transferable. We strongly recommend a policy that includes "Cancel For Any Reason" coverage, purchased within 21 days of your deposit. Insurance may be arranged via insuremytrip.com or your local provider. Yogi Nomads are not liable for cancellations, disruptions, or unforeseen circumstances.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Can you arrange my seaplane transfer to match my flight?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes. We coordinate seaplane transfers to align with your arrival and departure flights whenever possible. As part of the retreat group, you benefit from special retreat-only rates and dedicated assistance from Malé to the island.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Can I book sea excursions and spa treatments in advance?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes. You will benefit from exclusive retreat rates too. To secure availability and preferred pricing, bookings should be confirmed at least 45 days prior to arrival.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Do I need a visa to enter the Maldives?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Most nationalities receive a free visa on arrival in the Maldives. Requirements may vary depending on your passport. We recommend checking with your local embassy or official government sources prior to travel.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    What is IMUGA and do I need to complete it?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>IMUGA is the Maldives' official online travel declaration. All travelers are required to complete the IMUGA form within 96 hours before arrival and departure. We will remind you and guide you through the process closer to the retreat dates. <a href="https://imuga.immigration.gov.mv/traveller" target="_blank" rel="noopener">https://imuga.immigration.gov.mv/traveller</a></p>
+                    <p>Yes. Travel insurance is mandatory.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -2893,29 +2884,7 @@
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes. A detailed retreat flow and daily schedule will be shared with confirmed participants closer to the retreat date.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Do I have to join all activities and sessions?
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Not at all. The retreat is designed with flexibility in mind. You are welcome to participate fully or take personal time whenever you need. Everything is optional.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    Important travel note
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>While we are happy to guide and support you throughout the process, visa requirements, passport validity, and travel documentation remain the responsibility of each traveler. We strongly recommend confirming all travel requirements well in advance of departure.</p>
+                    <p>Yes. A detailed flow will be shared to confirmed participants closer to the retreat date</p>
                 </div>
             </div>
         </div>
@@ -2928,21 +2897,19 @@
         </div>
         <div class="final-cta-content">
             <p class="section-script">Ready to embark on a lifetime journey?</p>
-            <h2 class="section-title">This retreat is best explained<br><em style="display: block; text-align: center; margin-top: 0.3rem;">in conversation.</em></h2>
-            <p class="final-cta-text">
-                Reach out to Lina directly. She personally handles all bookings 
-                and is happy to answer any questions.
+            <p class="final-cta-text" style="margin-top: 1rem; margin-bottom: 1rem;">
+                Limited places available.
             </p>
-            <div class="final-cta-buttons">
-                <a href="https://wa.me/9613543547?text=I'd%20like%20to%20learn%20more%20about%20the%20Maldives%20retreat" class="final-cta-btn final-cta-btn-primary">
-                    Chat with us here!
-                </a>
-                <a href="#pricing" class="final-cta-btn final-cta-btn-secondary">
-                    Book now!
+            <div class="final-cta-buttons" style="margin-bottom: 1.5rem;">
+                <a href="#pricing" class="final-cta-btn final-cta-btn-primary">
+                    Book yours now!
                 </a>
             </div>
-            <p class="final-cta-email" style="margin-top: 1.5rem; color: rgba(255,255,255,0.9); font-size: 1rem;">
-                Or drop your email here: <a href="mailto:hello@yoginomads.eu" style="color: var(--soft-gold); text-decoration: underline;">hello@yoginomads.eu</a>
+            <p class="final-cta-text" style="margin-bottom: 0.5rem;">
+                For inquiries:
+            </p>
+            <p class="final-cta-email" style="color: rgba(255,255,255,0.9); font-size: 1rem;">
+                <a href="mailto:Life@yoginomads.eu" style="color: var(--soft-gold); text-decoration: underline;">Life@yoginomads.eu</a> - Chat with Lina
             </p>
         </div>
     </section>
@@ -2957,6 +2924,9 @@
                 <a href="https://www.instagram.com/yogi.nomads/" target="_blank" rel="noopener">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
+                <a href="https://wa.me/9613543547" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
             </div>
         </div>
     </footer>
@@ -2967,18 +2937,18 @@
             <i class="fa-solid fa-times"></i>
         </button>
         <div style="text-align: center;">
-            <h3 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--deep-teal); font-weight: bold; font-size: clamp(1.8rem, 4vw, 2.5rem);">Pay in Full Today & WIN a Luxury Yoga Retreat in the Maldives - For Free</h3>
+            <h3 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--deep-teal); font-weight: bold; font-size: clamp(1.8rem, 4vw, 2.5rem);">Win this Retreat Back!</h3>
             <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif; font-weight: 500;">
-                Complete your 100% payment today (or by March 31) and automatically enter the draw to win the entire Maldives yoga retreat experience for free.
+                Complete full payment before January 31 & enter the draw to receive your Maldives Yoga Retreat fully refunded.
             </p>
             <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif; font-weight: 500;">
-                This is our way of saying thank you for your trust and commitment.
+                One confirmed guest will win his retreat back!
             </p>
             <a href="#pricing" 
                class="hero-cta-primary" 
                style="display: block; text-align: center; text-decoration: none; font-size: 1.1rem; padding: 1rem 2rem;"
                onclick="closePopup()">
-                Pay in Full Today & Enter the Draw
+                Pay in Full today & Enter the Draw
             </a>
         </div>
     </div>
@@ -3371,6 +3341,67 @@
             // Initialize
             showVideo(0);
         }
+
+        // Flow Image Slideshow Functionality
+        function initFlowSlideshows() {
+            const flowSlideshows = document.querySelectorAll('.flow-image-slideshow');
+            const isMobile = window.innerWidth <= 768;
+            const intervals = [];
+
+            flowSlideshows.forEach((slideshow) => {
+                const images = slideshow.querySelectorAll('img');
+                let currentIndex = 0;
+                let hoverInterval = null;
+                let mobileInterval = null;
+
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        if (i === index) {
+                            img.classList.add('active');
+                        } else {
+                            img.classList.remove('active');
+                        }
+                    });
+                }
+
+                function nextImage() {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                }
+
+                // Desktop: Hover to scroll
+                if (!isMobile) {
+                    slideshow.addEventListener('mouseenter', function() {
+                        hoverInterval = setInterval(() => {
+                            nextImage();
+                        }, 500); // Change image every 500ms on hover
+                    });
+
+                    slideshow.addEventListener('mouseleave', function() {
+                        if (hoverInterval) {
+                            clearInterval(hoverInterval);
+                            hoverInterval = null;
+                        }
+                        // Reset to first image on mouse leave
+                        currentIndex = 0;
+                        showImage(0);
+                    });
+                }
+
+                // Mobile: Auto-scroll every 2 seconds
+                if (isMobile) {
+                    mobileInterval = setInterval(() => {
+                        nextImage();
+                    }, 2000);
+                    intervals.push(mobileInterval);
+                }
+            });
+
+            return intervals;
+        }
+
+        // Initialize on page load
+        let flowIntervals = initFlowSlideshows();
 
         // Video mute/unmute toggle function
         function toggleMute(videoId, button) {
