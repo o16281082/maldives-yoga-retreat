@@ -1044,6 +1044,58 @@
             color: var(--soft-gold);
         }
 
+        /* Video Testimonials */
+        .testimonials-videos {
+            margin-top: 3rem;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 9 / 16;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .videos-slideshow {
+            display: none;
+            position: relative;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .videos-slideshow .video-card {
+            display: none;
+        }
+
+        .videos-slideshow .video-card.active {
+            display: block;
+        }
+
+        .slideshow-arrows {
+            display: none;
+        }
+
         /* Villas Section */
         .villas {
             padding: 7rem 4%;
@@ -1829,6 +1881,71 @@
                 max-width: 500px;
             }
 
+            .videos-grid {
+                display: none;
+            }
+
+            .videos-slideshow {
+                display: block;
+            }
+
+            .slideshow-arrows {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 1.5rem;
+                gap: 1rem;
+            }
+
+            .slideshow-arrow {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                flex: 0 0 auto;
+            }
+
+            .slideshow-arrow:hover {
+                background: rgba(255,255,255,0.2);
+                transform: scale(1.1);
+            }
+
+            .slideshow-arrow:disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+
+            .slideshow-dots {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: center;
+                flex: 1;
+            }
+
+            .slideshow-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.3);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .slideshow-dot.active {
+                background: var(--soft-gold);
+                width: 24px;
+                border-radius: 4px;
+            }
+
             .villas-header {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -2243,6 +2360,53 @@
                     connected, relaxed, and completely at ease."
                 </p>
                 <p class="testimonial-author">— Noura H.</p>
+            </div>
+        </div>
+        <div class="testimonials-videos">
+            <div class="videos-grid">
+                <div class="video-card">
+                    <video autoplay muted loop playsinline preload="auto">
+                        <source src="IMG_9643.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-card">
+                    <video autoplay muted loop playsinline preload="auto">
+                        <source src="IMG_9714.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-card">
+                    <video autoplay muted loop playsinline preload="auto">
+                        <source src="Img9714.webm" type="video/webm">
+                        <source src="IMG_9714.MP4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="videos-slideshow">
+                <div class="video-card active">
+                    <video autoplay muted loop playsinline preload="auto">
+                        <source src="IMG_9643.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-card">
+                    <video muted loop playsinline preload="auto">
+                        <source src="IMG_9714.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-card">
+                    <video muted loop playsinline preload="auto">
+                        <source src="Img9714.webm" type="video/webm">
+                        <source src="IMG_9714.MP4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="slideshow-arrows">
+                    <button class="slideshow-arrow" id="video-prev" aria-label="Previous video">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="slideshow-dots"></div>
+                    <button class="slideshow-arrow" id="video-next" aria-label="Next video">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -3131,6 +3295,81 @@
                     }
                 }
             });
+        }
+
+        // Video Slideshow Functionality
+        const videoSlideshow = document.querySelector('.videos-slideshow');
+        if (videoSlideshow) {
+            const videoCards = videoSlideshow.querySelectorAll('.video-card');
+            const prevBtn = document.getElementById('video-prev');
+            const nextBtn = document.getElementById('video-next');
+            let currentVideoIndex = 0;
+
+            function showVideo(index) {
+                currentVideoIndex = index;
+                videoCards.forEach((card, i) => {
+                    const video = card.querySelector('video');
+                    if (i === index) {
+                        card.classList.add('active');
+                        if (video) {
+                            video.currentTime = 0;
+                            video.play().catch(e => console.log('Video play error:', e));
+                        }
+                    } else {
+                        card.classList.remove('active');
+                        if (video) {
+                            video.pause();
+                        }
+                    }
+                });
+                
+                // Update button states
+                if (prevBtn) prevBtn.disabled = index === 0;
+                if (nextBtn) nextBtn.disabled = index === videoCards.length - 1;
+
+                // Update dots
+                const dots = videoSlideshow.querySelectorAll('.slideshow-dot');
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentVideoIndex > 0) {
+                        showVideo(currentVideoIndex - 1);
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    if (currentVideoIndex < videoCards.length - 1) {
+                        showVideo(currentVideoIndex + 1);
+                    }
+                });
+            }
+
+            // Create dots indicator
+            const dotsContainer = videoSlideshow.querySelector('.slideshow-dots');
+            if (dotsContainer) {
+                videoCards.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'slideshow-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        showVideo(i);
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            // Initialize
+            showVideo(0);
         }
 
         // Video mute/unmute toggle function
