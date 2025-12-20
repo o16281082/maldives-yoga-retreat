@@ -96,6 +96,19 @@
             to { opacity: 1; }
         }
 
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            10% { transform: rotate(-3deg) scale(1.02); }
+            20% { transform: rotate(3deg) scale(1.02); }
+            30% { transform: rotate(-2deg) scale(1.01); }
+            40% { transform: rotate(2deg) scale(1.01); }
+            50% { transform: rotate(-1deg) scale(1.01); }
+            60% { transform: rotate(1deg) scale(1.01); }
+            70% { transform: rotate(-1deg) scale(1); }
+            80% { transform: rotate(1deg) scale(1); }
+            90% { transform: rotate(0deg) scale(1); }
+        }
+
         @keyframes popupFadeIn {
             from { 
                 opacity: 0; 
@@ -132,6 +145,11 @@
             animation: popupFadeIn 0.5s ease-out forwards;
         }
 
+        #promo-popup .hero-cta-primary {
+            animation: wiggle 2s ease-in-out infinite;
+            transform-origin: center;
+        }
+
         .popup-close {
             position: absolute;
             top: 1rem;
@@ -147,6 +165,36 @@
 
         .popup-close:hover {
             color: var(--deep-teal);
+        }
+
+        .popup-reopen-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--deep-teal);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(26, 95, 94, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .popup-reopen-btn:hover {
+            background: var(--ocean);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(26, 95, 94, 0.6);
+        }
+
+        .popup-reopen-btn.hidden {
+            display: none;
         }
 
         #popup-overlay {
@@ -348,9 +396,9 @@
             background-size: 200% 100%;
             color: white;
             text-align: center;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1.25rem;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+            font-size: 1.75rem;
             font-style: italic;
             letter-spacing: 0.05em;
             animation: shimmer 3s ease-in-out infinite;
@@ -369,7 +417,7 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 2.5rem;
+            top: 3.8rem;
             width: 100%;
             z-index: 100;
             padding: 1.5rem 4%;
@@ -530,9 +578,9 @@
             inset: 0;
             background: linear-gradient(
                 180deg,
-                rgba(0,0,0,0.25) 0%,
-                rgba(0,0,0,0.1) 40%,
-                rgba(26,95,94,0.35) 100%
+                rgba(0,0,0,0.4) 0%,
+                rgba(0,0,0,0.25) 40%,
+                rgba(26,95,94,0.5) 100%
             );
         }
 
@@ -553,6 +601,7 @@
             margin-top: -60px;
             opacity: 0.95;
             animation: drift 6s ease-in-out infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .hero-title {
@@ -562,6 +611,7 @@
             line-height: 1.1;
             letter-spacing: 0.02em;
             margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .hero-title em {
@@ -575,11 +625,11 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            font-size: 1.1rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-style: italic;
-            opacity: 0.9;
+            opacity: 1;
             margin-bottom: 2.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 3px 15px rgba(0,0,0,0.3);
         }
 
         .hero-ctas {
@@ -650,6 +700,10 @@
             margin-bottom: 0.5rem;
         }
 
+        .about .section-script {
+            color: var(--deep-teal);
+        }
+
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 4vw, 3.2rem);
@@ -715,9 +769,10 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1.1rem;
-            font-style: italic;
+            font-style: normal;
+            font-weight: 500;
             color: var(--deep-teal);
         }
 
@@ -1765,6 +1820,7 @@
             .about-content,
             .founder-content {
                 order: 0 !important;
+                padding: 3rem 5%;
             }
 
             .experience-grid,
@@ -1813,21 +1869,21 @@
 
         @media (max-width: 768px) {
             .early-bird-banner {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.85rem;
+                padding: 0.3rem 0.46rem;
+                font-size: 0.92rem;
                 line-height: 1.3;
             }
 
-            /* Keep section text on one line on mobile */
             .about .section-script {
-                font-size: clamp(1.1rem, 2.8vw, 1.5rem);
-                white-space: nowrap;
-                max-width: 100%;
+                font-size: clamp(1rem, 3vw, 1.4rem);
+                white-space: normal;
+                line-height: 1.5;
             }
 
             .about .section-title {
-                font-size: clamp(1.1rem, 2.8vw, 1.5rem);
-                line-height: 1.4;
+                font-size: clamp(1.5rem, 4vw, 2rem);
+                line-height: 1.3;
+                margin-bottom: 1rem;
             }
 
             .about .section-title br {
@@ -1836,10 +1892,29 @@
 
             .about .section-title em {
                 display: block;
-                white-space: nowrap;
+                white-space: normal;
                 margin-top: 0.2rem;
                 max-width: 100%;
                 font-size: clamp(1rem, 2.5vw, 1.4rem);
+            }
+
+            .about .feature-list {
+                margin-top: 1.5rem;
+                gap: 1rem;
+            }
+
+            .about .feature-item {
+                font-size: 1rem;
+                line-height: 1.5;
+                align-items: flex-start;
+            }
+
+            .popup-reopen-btn {
+                width: 45px;
+                height: 45px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.3rem;
             }
 
             /* Decrease font size for gallery script text on mobile */
@@ -1851,9 +1926,14 @@
                 display: flex;
             }
             
+            nav {
+                top: 1.9rem;
+                z-index: 100;
+            }
+
             .nav-links {
                 position: fixed;
-                top: 7rem; /* Banner + Nav height */
+                top: 5.2rem; /* Banner + Nav height */
                 left: 0;
                 right: 0;
                 background: var(--deep-teal);
@@ -1861,7 +1941,7 @@
                 padding: 2rem;
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
-                z-index: 101;
+                z-index: 102;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             }
             
@@ -1887,7 +1967,7 @@
                 flex-direction: column;
                 gap: 0;
                 font-weight: 500;
-                font-size: 1.3rem;
+                font-size: 1.6rem;
                 line-height: 1.1;
             }
 
@@ -1932,7 +2012,7 @@
 
     <!-- Early Bird Banner -->
     <div class="early-bird-banner">
-        Early Confirmation Privilege - complete your retreat payment before January 30, 2026 & enter the draw to win <span>500 USD</span> credited back!
+        Pay in Full Today or by March 31 & Enter the Draw to WIN Your Maldives Yoga Retreat for FREE
     </div>
 
     <!-- Navigation -->
@@ -1945,7 +2025,7 @@
             <a href="#about">The Experience</a>
             <a href="#founder">Meet Lina</a>
             <a href="#villas">The Villas</a>
-            <a href="#pricing">Investment</a>
+            <a href="#pricing">I WANT A FREE RETREAT</a>
             <a href="https://wa.me/9613543547" class="nav-cta">
                 <i class="fa-brands fa-whatsapp"></i> Inquire
             </a>
@@ -1976,7 +2056,7 @@
                 <span>Avani+ Fares Resort, Baa Atoll</span>
             </div>
             <div class="hero-ctas">
-                <a href="#pricing" class="hero-cta-secondary">View Investment ↓</a>
+                <a href="#pricing" class="hero-cta-secondary">I WANT A FREE RETREAT!</a>
             </div>
         </div>
     </section>
@@ -1987,51 +2067,38 @@
             <img src="IMG_7530.webp" alt="Woman floating in crystal clear Maldives water"/>
         </div>
         <div class="about-content">
-            <p class="section-script">Modern yoga meets refined island living</p>
             <h2 class="section-title">
-                This is more than just a retreat<br/>
-                <em>This is our way to experience the Maldives</em>
+                Why This Retreat?
             </h2>
-            <p class="body-text">
-                This retreat is designed for anyone who wants to experience the Maldives in a meaningful and elevated way — whether you practice yoga daily, occasionally, or not at all.
-            </p>
-            <p class="body-text">
-                Yogis &amp; non-yogis enjoy this escape equally, as the program blends wellness, ocean living, exploration, fitness, and lively evenings into one seamless experience.
-            </p>
-            <p class="body-text">
-                You are welcome to come alone, with a friend, or with your partner. 
-                Solo travelers feel instantly at ease within the warm Yogi Nomads community, while friends and couples enjoy a natural flow between shared moments &amp; personal space.
-            </p>
-            <p class="body-text">
-                Everything is structured with intention — offering depth when you seek it, calm when you need it, and joy that feels organic.
-            </p>
-            <p class="body-text">
-                This is the Maldives, with purpose: a curated experience where movement, music, ocean energy, and boutique luxury island living come together in a way that feels effortless, welcoming, and unforgettable.
-            </p>
+            <p class="section-script" style="font-size: clamp(1.1rem, 2.3vw, 1.5rem); line-height: 1.1;">A founder-led, luxury island retreat blending modern yoga, yoga to music immersions, ocean living, lively evenings, and refined community experiences — designed so everything is taken care of and you can simply arrive & enjoy.</p>
             <div class="feature-list">
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Founder-led experience, 150+ retreats hosted by Yogi Nomads
+                    Set in one of the most beautiful &amp; exclusive destinations in the world in a 5* luxury resort
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Modern Yoga, Yoga to Music, Signature Classes & a multi style program
+                    A group where connection feels natural and easy
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Sound healing journeys & fitness activities
+                    Ideal for solo travelers, couples, or friends — many arrive alone and feel at home quickly
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Vibrant evenings, DJ-led nights, bonfire Maldivian drums & beach cinema
+                    A proven Yogi Nomads format, previously hosted and sold out with 40 guests
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Island exploration, snorkeling & kayaking
+                    A distinctive yoga experience blending modern movement, music-led signature classes, and signature multi-style practices unique to this retreat
                 </div>
                 <div class="feature-item">
                     <span class="feature-dot"></span>
-                    Previous edition - <strong>SOLD OUT</strong> 
+                    A seamless balance of comfort, beauty, movement, freedom, rest, and meaningful connections
+                </div>
+                <div class="feature-item">
+                    <span class="feature-dot"></span>
+                    A chance to win your retreat back if you confirm before January 31, 2026
                 </div>
             </div>
         </div>
@@ -2736,25 +2803,27 @@
             <i class="fa-solid fa-times"></i>
         </button>
         <div style="text-align: center;">
-            <h3 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--deep-teal);">Early Confirmation Privilege</h3>
-            <p style="color: var(--warm-taupe); margin-bottom: 1rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif;">
-                Guests who complete full payment before January 30, 2026 are automatically entered into a private retreat credit draw.
+            <h3 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--deep-teal); font-weight: bold; font-size: clamp(1.8rem, 4vw, 2.5rem);">Pay in Full Today & WIN a Luxury Yoga Retreat in the Maldives - For Free</h3>
+            <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif; font-weight: 500;">
+                Complete your 100% payment today (or by March 31) and automatically enter the draw to win the entire Maldives yoga retreat experience for free.
             </p>
-            <p style="color: var(--warm-taupe); margin-bottom: 1rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif;">
-                One guest will receive <strong style="color: var(--deep-teal);">500 USD</strong> credited back!
-            </p>
-            <p style="color: var(--warm-taupe); margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5; font-style: italic; font-family: 'Lato', sans-serif;">
-                Limited to confirmed participants.
+            <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif; font-weight: 500;">
+                This is our way of saying thank you for your trust and commitment.
             </p>
             <a href="#pricing" 
                class="hero-cta-primary" 
-               style="display: block; text-align: center; text-decoration: none;"
+               style="display: block; text-align: center; text-decoration: none; font-size: 1.1rem; padding: 1rem 2rem;"
                onclick="closePopup()">
-                Book Now · Enter the Draw
+                Pay in Full Today & Enter the Draw
             </a>
         </div>
     </div>
     <div id="popup-overlay" onclick="closePopup()"></div>
+
+    <!-- Popup Reopen Button -->
+    <button id="popup-reopen-btn" class="popup-reopen-btn hidden" onclick="openPopup()" aria-label="Reopen promotion">
+        <i class="fa-solid fa-gift"></i>
+    </button>
 
     <!-- Booking Form Popup -->
     <div id="booking-form-popup">
@@ -2926,6 +2995,7 @@
         // Popup Logic
         const popup = document.getElementById('promo-popup');
         const overlay = document.getElementById('popup-overlay');
+        const reopenBtn = document.getElementById('popup-reopen-btn');
         let popupShown = false;
 
         function showPopup() {
@@ -2933,6 +3003,15 @@
                 popup.classList.add('show', 'popup-animate');
                 overlay.classList.add('show');
                 popupShown = true;
+                if (reopenBtn) reopenBtn.classList.add('hidden');
+            }
+        }
+
+        function openPopup() {
+            if (popup && overlay) {
+                popup.classList.add('show', 'popup-animate');
+                overlay.classList.add('show');
+                if (reopenBtn) reopenBtn.classList.add('hidden');
             }
         }
 
@@ -2940,6 +3019,7 @@
             if (popup && overlay) {
                 popup.classList.remove('show', 'popup-animate');
                 overlay.classList.remove('show');
+                if (reopenBtn) reopenBtn.classList.remove('hidden');
             }
         }
 
