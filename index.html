@@ -726,6 +726,7 @@
         }
 
         .body-text {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.05rem;
             color: var(--warm-taupe);
             margin-bottom: 1.25rem;
@@ -877,6 +878,103 @@
             opacity: 0.85;
         }
 
+        /* Sample Day Section */
+        .sample-day-section {
+            padding: 6rem 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .sample-day-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 2rem 4% 1rem 4%;
+        }
+
+        .sample-day-header .section-script br:last-of-type {
+            display: none;
+        }
+
+        .sample-day-header .section-title {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 0.5rem;
+        }
+
+        .sample-day-strips {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sample-day-strip {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding-left: 4rem;
+        }
+
+        .sample-day-strip-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .sample-day-strip-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 8s ease;
+        }
+
+        .sample-day-strip:hover .sample-day-strip-bg img {
+            transform: scale(1.15);
+        }
+
+        .sample-day-strip-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.75) 25%, rgba(255,255,255,0.3) 45%, transparent 50%);
+            z-index: 2;
+        }
+
+        .sample-day-strip-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            max-width: 50%;
+        }
+
+        .sample-day-keyword {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--warm-taupe);
+            letter-spacing: 0.05em;
+        }
+
+        .sample-day-dots {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--deep-teal);
+            letter-spacing: 0.3em;
+        }
+
+        .sample-day-subtext {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--warm-taupe);
+            font-weight: 500;
+        }
+
         /* Founder Section */
         .founder {
             display: grid;
@@ -939,6 +1037,7 @@
         }
 
         .stat-label {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.02rem;
             color: var(--warm-taupe);
             margin-top: 0.25rem;
@@ -1015,7 +1114,7 @@
         }
 
         .flow-time {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.3rem;
             font-weight: bold;
             font-style: normal;
@@ -1024,9 +1123,11 @@
         }
 
         .flow-activity {
-            font-size: 1.44rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
             color: white;
             line-height: 1.5;
+            font-weight: 500;
         }
 
         .flow-image-box {
@@ -1249,7 +1350,6 @@
 
         .inclusions-header .section-script {
             color: var(--soft-gold);
-            font-weight: 600;
         }
 
         .inclusions-header .section-title {
@@ -1285,7 +1385,9 @@
             align-items: flex-start;
             gap: 0.75rem;
             margin-bottom: 0.9rem;
+            font-family: 'Lato', sans-serif;
             font-size: 0.95rem;
+            font-weight: 500;
             color: #555;
         }
 
@@ -1305,11 +1407,12 @@
         }
 
         .inclusions-note {
+            font-family: 'Montserrat', sans-serif;
             margin-top: 1.5rem;
             padding-top: 1rem;
             border-top: 1px solid var(--sand);
             font-size: 0.85rem;
-            font-style: italic;
+            font-style: normal;
             color: var(--warm-taupe);
         }
 
@@ -1344,7 +1447,7 @@
             background: linear-gradient(90deg, var(--deep-teal), var(--ocean));
             color: white;
             padding: 0.6rem;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.0925rem;
             font-style: normal;
         }
@@ -1374,6 +1477,7 @@
         }
 
         .pricing-per {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             color: var(--warm-taupe);
         }
@@ -1386,6 +1490,7 @@
         }
 
         .pricing-detail {
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             color: #555;
             margin-bottom: 0.5rem;
@@ -1413,7 +1518,7 @@
             line-height: 1.4;
             padding: 1.1rem 1.5rem;
             border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -1517,7 +1622,6 @@
         .section-4 .gallery-text .section-script {
             color: var(--deep-teal);
             text-shadow: none;
-            font-weight: 600;
         }
 
         .section-4 .gallery-text .section-title {
@@ -1528,7 +1632,7 @@
         }
 
         .gallery-text .script {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.8rem, 4.5vw, 3.5rem);
             line-height: 1.2;
             text-shadow: 0 4px 30px rgba(0,0,0,0.3);
@@ -1536,9 +1640,9 @@
         }
 
         .gallery-text .subtitle {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: clamp(1rem, 2vw, 1.3rem);
-            font-style: italic;
+            font-style: normal;
             margin-top: 0.75rem;
             opacity: 0.9;
             letter-spacing: 0.1em;
@@ -1767,7 +1871,6 @@
                 font-size: clamp(1.2rem, 2.2vw, 1.6rem);
                 line-height: 1.4;
                 color: var(--deep-teal);
-                font-weight: 600;
             }
 
             .section-4 .gallery-text .section-title {
@@ -1793,9 +1896,6 @@
             margin-bottom: 3rem;
         }
 
-        .faq-header .section-script {
-            font-family: 'Cormorant Garamond', serif;
-        }
 
         .faq-grid {
             max-width: 800px;
@@ -1845,6 +1945,7 @@
         }
 
         .faq-answer p {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             color: var(--warm-taupe);
             line-height: 1.7;
@@ -1888,9 +1989,9 @@
         }
 
         .final-cta-text {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.2rem;
-            font-style: italic;
+            font-style: normal;
             opacity: 0.9;
             margin-bottom: 2.5rem;
             max-width: 500px;
@@ -2188,6 +2289,46 @@
                 font-size: clamp(1.3rem, 3.5vw, 2.5rem);
             }
 
+            .sample-day-section {
+                padding: 4rem 0;
+            }
+
+            .sample-day-header {
+                padding: 2rem 4% 1rem 4%;
+                margin-bottom: 2rem;
+            }
+
+            .sample-day-header .section-title {
+                margin-bottom: 0.5rem;
+                font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            }
+
+            .sample-day-strip {
+                height: 150px;
+                padding-left: 2rem;
+            }
+
+
+            .sample-day-keyword {
+                font-size: 1.3rem;
+            }
+
+            .sample-day-dots {
+                font-size: 1.2rem;
+            }
+
+            .sample-day-subtext {
+                font-size: 0.9rem;
+            }
+
+            .sample-day-header .section-script {
+                text-align: justify;
+            }
+
+            .sample-day-header .section-script br:last-of-type {
+                display: none;
+            }
+
             .mobile-menu-toggle {
                 display: flex;
             }
@@ -2394,12 +2535,72 @@
         </div>
     </section>
 
+    <!-- Sample Day Section -->
+    <section class="sample-day-section">
+        <div class="sample-day-header">
+            <h2 class="section-title" style="font-weight: 600;">The Experience · A Day in Paradise</h2>
+            <p class="section-script" style="font-size: clamp(1rem, 2vw, 1.35rem); line-height: 1.1; text-align: justify; max-width: 800px; margin: 0 auto;">Structured enough to feel held. Flexible enough to feel free.<br/><br/>A thoughtfully curated daily rhythm balancing movement, island living, and time to simply enjoy.<br/>Every detail is curated in advance, so you don't need to think, organize, or manage — you arrive and settle into the experience.</p>
+        </div>
+        <div class="sample-day-strips">
+            <div class="sample-day-strip">
+                <div class="sample-day-strip-bg">
+                    <img src="IMG_9524.JPG" alt="Morning yoga"/>
+                </div>
+                <div class="sample-day-strip-overlay"></div>
+                <div class="sample-day-strip-content">
+                    <div class="sample-day-keyword">Morning</div>
+                    <div class="sample-day-subtext">Signature yoga session</div>
+                </div>
+            </div>
+            <div class="sample-day-strip">
+                <div class="sample-day-strip-bg">
+                    <img src="IMG_7533.JPG" alt="Late Morning"/>
+                </div>
+                <div class="sample-day-strip-overlay"></div>
+                <div class="sample-day-strip-content">
+                    <div class="sample-day-keyword">Late Morning</div>
+                    <div class="sample-day-subtext">Breakfast & island time</div>
+                </div>
+            </div>
+            <div class="sample-day-strip">
+                <div class="sample-day-strip-bg">
+                    <img src="IMG_7530.webp" alt="Afternoon"/>
+                </div>
+                <div class="sample-day-strip-overlay"></div>
+                <div class="sample-day-strip-content">
+                    <div class="sample-day-keyword">Afternoon</div>
+                    <div class="sample-day-subtext">Beach, snorkeling, spa, kayaking, or excursions</div>
+                </div>
+            </div>
+            <div class="sample-day-strip">
+                <div class="sample-day-strip-bg">
+                    <img src="IMG_7531.webp" alt="Late Afternoon"/>
+                </div>
+                <div class="sample-day-strip-overlay"></div>
+                <div class="sample-day-strip-content">
+                    <div class="sample-day-keyword">Late Afternoon</div>
+                    <div class="sample-day-subtext">Sound healing, musical yoga flow, and fitness classes</div>
+                </div>
+            </div>
+            <div class="sample-day-strip">
+                <div class="sample-day-strip-bg">
+                    <img src="IMG_7532.webp" alt="Evening"/>
+                </div>
+                <div class="sample-day-strip-overlay"></div>
+                <div class="sample-day-strip-content">
+                    <div class="sample-day-keyword">Evening</div>
+                    <div class="sample-day-subtext">DJ-led nights, cultural evenings, bonfire & drums, beach cinema</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Daily Flow -->
     <section class="daily-flow">
         <div class="daily-flow-header">
-            <p class="section-script" style="font-family: 'Cormorant Garamond', serif; color: var(--soft-gold); font-weight: 600;">The Experience · A Day in Paradise</p>
-            <h2 class="section-title" style="font-family: 'Montserrat', sans-serif; font-size: clamp(1rem, 2vw, 1.6rem); font-weight: 500; color: white;">Structured enough to feel held. Flexible enough to feel free.</h2>
-            <p class="body-text" style="max-width: 800px; margin: 0 auto; text-align: justify; font-size: clamp(1rem, 2vw, 1.6rem); line-height: 1.6; color: white; margin-top: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 500;">
+            <h2 class="section-title" style="color: var(--soft-gold); font-weight: 600;">The Experience · A Day in Paradise</h2>
+            <p class="section-script" style="max-width: 800px; margin: 0 auto; font-size: clamp(1rem, 2vw, 1.35rem); line-height: 1.1; text-align: justify; color: white;">Structured enough to feel held. Flexible enough to feel free.</p>
+            <p class="body-text" style="max-width: 800px; margin: 0 auto; text-align: justify; font-size: clamp(1rem, 2vw, 1.35rem); line-height: 1.1; color: white; margin-top: 1rem;">
                 A thoughtfully curated daily rhythm balancing movement, island living, and time to simply enjoy. Every detail is curated in advance, so you don't need to think, organize, or manage — you arrive and settle into the experience.
             </p>
         </div>
@@ -2478,7 +2679,7 @@
         <div class="gallery-overlay">
             <div class="gallery-text">
                 <p class="section-script">A Proven Yogi Nomads Experience</p>
-                <h2 class="section-title">Previous Maldives Edition — SOLD OUT</h2>
+                <h2 class="section-title" style="font-weight: 600;">Previous Maldives Edition — SOLD OUT</h2>
             </div>
         </div>
     </div>
@@ -2536,7 +2737,7 @@
     <section class="founder" id="founder">
         <div class="founder-content">
             <p class="section-script">Meet Your Host</p>
-            <h2 class="section-title">Lina Aoun</h2>
+            <h2 class="section-title" style="font-weight: 600;">Lina Aoun</h2>
             <p class="body-text">
                 Founder of Yogi Nomads
             </p>
@@ -2580,11 +2781,11 @@
             <div class="gallery-text">
                 <p class="script">A Distinct Yoga Journey</p>
                 <div style="margin-top: 1.75rem; text-align: center; max-width: 420px; margin-left: auto; margin-right: auto;">
-                    <ul style="font-size: 1.14rem; color: var(--deep-teal); line-height: 1.5; list-style-position: inside; padding-left: 0; text-align: left; font-weight: 600;">
-                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Multi-style yoga program (Hatha, Vinyasa, Yin, Yoga Nidra-inspired)</li>
-                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Signature, music-led classes unique to Yogi Nomads</li>
-                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Modern, non-traditional approach — refined and inclusive</li>
-                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 600;">Adaptable for all levels - beginners and advanced practitioners alike</li>
+                    <ul style="font-size: 1.1rem; color: var(--deep-teal); line-height: 1.5; list-style-position: inside; padding-left: 0; text-align: left; font-weight: 500;">
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 500;">Multi-style yoga program (Hatha, Vinyasa, Yin, Yoga Nidra-inspired)</li>
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 500;">Signature, music-led classes unique to Yogi Nomads</li>
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 500;">Modern, non-traditional approach — refined and inclusive</li>
+                        <li style="margin-bottom: 0.3rem; font-family: 'Lato', sans-serif; font-weight: 500;">Adaptable for all levels - beginners and advanced practitioners alike</li>
                     </ul>
                 </div>
             </div>
@@ -2598,10 +2799,10 @@
                 <h2 class="section-title">Your Sanctuary · The Resort</h2>
             </div>
             <div>
-                <p class="body-text" style="max-width: 100%; font-family: 'Poppins', sans-serif; color: var(--deep-teal); font-weight: 600;">
+                <p class="body-text" style="max-width: 100%; color: var(--deep-teal); font-weight: 600;">
                     Avani+ Fares Maldives is a 5-star island resort by Minor Hotels, located in the heart of Baa Atoll, a UNESCO Biosphere Reserve.
                 </p>
-                <ul style="max-width: 100%; font-family: 'Poppins', sans-serif; color: var(--deep-teal); font-weight: 500; list-style-position: inside; padding-left: 0; margin-top: 0.5rem;">
+                <ul style="max-width: 100%; font-family: 'Lato', sans-serif; color: var(--deep-teal); font-weight: 500; list-style-position: inside; padding-left: 0; margin-top: 0.5rem;">
                     <li style="margin-bottom: 0.25rem;">Beachfront pavilion villas with contemporary design</li>
                     <li style="margin-bottom: 0.25rem;">Seamless indoor-outdoor living and experiences</li>
                     <li style="margin-bottom: 0.25rem;">Refined service and vibrant house reef</li>
@@ -2628,7 +2829,7 @@
         <div class="inclusions-content">
             <div class="inclusions-header">
                 <p class="section-script">The Package</p>
-                <h2 class="section-title">What's <em>Included</em></h2>
+                <h2 class="section-title" style="font-weight: 600;">What's <em>Included</em></h2>
             </div>
             <div class="inclusions-grid">
                 <div class="inclusions-col">
@@ -2731,7 +2932,7 @@
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="pricing-header">
-            <h2 class="section-title">Reserve Your <em>Journey</em></h2>
+            <h2 class="section-title" style="font-weight: 600;">Reserve Your <em>Journey</em></h2>
         </div>
         <div class="pricing-card">
             <div class="pricing-badge">
@@ -2747,7 +2948,7 @@
                     <a href="#" class="pricing-cta pricing-cta-secondary" onclick="openBookingForm('30% Deposit', 'https://yoginomads.eu/cart/51493883937051:1?checkout'); return false;">
                         Secure your Spot with 30%
                     </a>
-                    <p style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem; color: var(--warm-taupe); font-family: 'Poppins', sans-serif;">
+                    <p style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem; color: var(--warm-taupe); font-family: 'Montserrat', sans-serif;">
                         confirm your spot & complete payment 45 days before retreat begins
                     </p>
                 </div>
@@ -2795,10 +2996,10 @@
             </div>
             <div class="gallery-sidebyside-content">
                 <div class="gallery-text">
-                    <p class="script" style="font-size: clamp(1.5rem, 3vw, 2.5rem); text-align: center; font-family: 'Poppins', sans-serif;">
+                    <p class="script" style="font-size: clamp(1.5rem, 3vw, 2.5rem); text-align: center;">
                         A space to surrender.
                     </p>
-                    <p class="subtitle" style="line-height: 1.4; text-align: justify; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">This retreat is meticulously organized so you can arrive, settle in, and immediately exhale. From the moment you step onto the island, every detail has been thoughtfully anticipated; the structure is present — quietly held in the background — so you can move through your days with that rare feeling of being fully held.</p>
+                    <p class="subtitle" style="line-height: 1.4; text-align: justify; margin-bottom: 1rem;">This retreat is meticulously organized so you can arrive, settle in, and immediately exhale. From the moment you step onto the island, every detail has been thoughtfully anticipated; the structure is present — quietly held in the background — so you can move through your days with that rare feeling of being fully held.</p>
                 </div>
             </div>
         </div>
@@ -2960,10 +3161,10 @@
         </button>
         <div style="text-align: center;">
             <h3 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--deep-teal); font-weight: bold; font-size: clamp(1.8rem, 4vw, 2.5rem);">Win this Retreat Back!</h3>
-            <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif; font-weight: 500;">
+            <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Montserrat', sans-serif; font-weight: 500;">
                 Complete full payment before January 31 & enter the draw to receive your Maldives Yoga Retreat fully refunded.
             </p>
-            <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Lato', sans-serif; font-weight: 500;">
+            <p style="color: var(--deep-teal); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; font-family: 'Montserrat', sans-serif; font-weight: 500;">
                 One confirmed guest will win his retreat back!
             </p>
             <a href="#pricing" 
